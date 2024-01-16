@@ -1,0 +1,100 @@
+<section>
+    <div class="page-header min-vh-100">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+                    <div class="card  card-plain">
+                        <div class="card-header pb-0 text-start">
+                            <h4 class="font-weight-bolder">{{'SIGN_IN_SCREEN.TITLE' | translate}}</h4>
+                            <p class="mb-0">{{'SIGN_IN_SCREEN.SUB_TITLE' | translate}} </p>
+                        </div>
+                        <div class="card-body">
+                            <form role="form" [formGroup]="signInForm" (ngSubmit)="handleSubmit()">
+                                <app-custom-input id="email" label="email" formControlName="email" type="text"
+                                    [icon]="iconNames.EnvelopeAtFill"
+                                    placeholder="SIGN_UP_SCREEN.FORM.EMAIL_PLACEHOLDER">
+
+                                    <app-custom-input-error *ngIf="signInForm.controls['email'].errors?.['required']">
+                                        {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                                    </app-custom-input-error>
+                                    <app-custom-input-error *ngIf="signInForm.controls['email'].errors?.['email']">
+                                        {{'SIGN_UP_SCREEN.FORM.ERRORS.EMAIL'|translate}}
+                                    </app-custom-input-error>
+                                </app-custom-input>
+                                <app-custom-input id="password" label="password" type="password"
+                                    [icon]="iconNames.KeyFill" formControlName="password"
+                                    placeholder="SIGN_UP_SCREEN.FORM.PASSWORD_PLACEHOLDER">
+                                    <app-custom-input-error
+                                        *ngIf="signInForm.controls['password'].errors?.['required']">
+                                        {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                                    </app-custom-input-error>
+                                    <app-custom-input-error *ngIf="signInForm.controls['password'].errors?.['pattern']">
+                                        {{'SIGN_UP_SCREEN.FORM.ERRORS.PASSWORD_INVALID'|translate}}
+                                    </app-custom-input-error>
+                                </app-custom-input>
+
+                                <div class="text-center">
+                                    <button type="submit"
+                                        class="btn btn-lg bg-water-violeta btn-lg w-100 mt-4 mb-0 text-white">
+                                        {{'SIGN_IN_SCREEN.FORM.SUBMIT_BUTTON'|translate}}
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                            <p class="mb-4 text-sm mx-auto">
+                                {{'SIGN_IN_SCREEN.FORM.HAVE_ACCOUNT'|translate}}
+                                <a class="text-info text-gradient font-weight-bold cursor-pointer"
+                                    (click)="goToRegister()">{{'SIGN_IN_SCREEN.FORM.RESIGTER_NOW'|translate}}</a>
+                            </p>
+                        </div>
+                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                            <p class="mb-4 text-sm mx-auto">
+                                {{'SIGN_IN_SCREEN.FORM.RESET_PASSWORD'|translate}}
+                                <a class="text-info text-gradient font-weight-bold cursor-pointer"
+                                    (click)="goToResetPassword()">{{'SIGN_IN_SCREEN.FORM.UPDATE'|translate}} </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0
+                text-center justify-content-center flex-column cursor-pointer" (click)="goToHome()">
+                    <div
+                        class="position-relative bg-gradient-waterViolita h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+
+                        <div class="position-absolute opacity-7 end-3 top-2 z-index-2">
+
+
+
+
+
+                            <select class="form-select" [(ngModel)]="lang" (change)="setLng(lang)">
+                                <option selected>Language </option>
+                                <option value="fr">Français</option>
+                                <option value="ar">عربية</option>
+                                <option value="en">Anglais</option>
+                            </select>
+
+
+
+
+                        </div>
+
+
+                        <img src="../../../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines"
+                            class="position-absolute opacity-4 start-0">
+                        <div class="position-relative">
+                            <img class="max-width-500 w-100 position-relative z-index-2"
+                                src="../../../../assets/img/home.webp" alt="DARKOUM">
+                        </div>
+                        <h4 class="mt-5 text-white font-weight-bolder">DARKOUM</h4>
+                        <p class="text-white">{{'SIGN_IN_SCREEN.PARAGRAPHE'|translate}}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</section>

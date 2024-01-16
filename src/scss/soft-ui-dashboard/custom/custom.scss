@@ -1,0 +1,54 @@
+.custom-shadow {
+  box-shadow: inset -18px 11px 16px rgba(255, 255, 255, 0.94),
+  inset 8px -15px 17px rgba(0, 0, 0, 0.32);
+}
+
+.text-custom-success {
+  color: $green-xd;
+}
+
+.text-custom-danger {
+  color: $red-xd;
+}
+
+.text-custom-warning {
+  color: $orange-xd;
+}
+
+.text-custom-info1 {
+  color: $blue-xd;
+}
+
+.text-custom-info2 {
+  color: $default-back;
+}
+
+
+
+g[aria-label="Chart created using amCharts library"] {
+  display: none;
+}
+
+.pt-6,
+.py-6 {
+  padding-top: 4rem !important;
+}
+
+.table .p-0 {
+  padding: 0 !important;
+}
+
+.table .mt-1 {
+  margin-top: 10px !important;
+}
+
+.table .ml-1 {
+  margin-left: 10px !important;
+}
+
+.ml1{
+  margin-left: 10px !important;
+}
+.mr1{
+  margin-left: 10px !important;
+}

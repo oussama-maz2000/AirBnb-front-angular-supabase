@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="row">
+        <form role="form" class="col-sm-12" [formGroup]="agenceForm">
+
+            <div class="col-sm-6">
+
+
+
+                <div>
+                    <label for="agence_name" class="form-label">{{'AGENCE_CREATE_SCREEN.NOM_AGENCE'| translate}}</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="agence_nom" name="agence_nom"
+                            formControlName="name" />
+                    </div>
+
+                </div>
+                <div>
+                    <label for="agence_email"
+                        class="form-label">{{'AGENCE_CREATE_SCREEN.EMAIL_AGENCE'|translate}}</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="agence_email" name="agence_email"
+                            formControlName="email" />
+                    </div>
+
+
+                </div>
+
+
+                <div formGroupName="details">
+                    <label for="agence_phone" class="form-label">Numero de votre agence</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="agence_phone" name="agence_phone"
+                            formControlName="phone" />
+                    </div>
+
+                </div>
+
+
+
+
+
+            </div>
+            <div class="col-sm-6" formGroupName="details">
+                <div>
+                    <label for="agence_type" class="form-label">Type de votre agence</label>
+
+
+                    <div class="input-group">
+                        <select class="form-select" formControlName="type">
+                            <option value="1">professionnel</option>
+                            <option value="2">particulier</option>
+
+                        </select>
+
+                    </div>
+                </div>
+                <div>
+                    <label for="agence_willaya" class="form-label">Willaya de votre agence</label>
+                    <div class="input-group">
+                        <select class="form-select" formControlName="willaya">
+                            <option *ngFor="let element of willaya" [value]="element">
+                                {{ element }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label for="agence_address" class="form-label">Address de votre
+                        agence</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="agence_address" name="agence_address"
+                            formControlName="address" />
+                    </div>
+
+                </div>
+
+            </div>
+            <button type="button" class="btn btn-danger mt-3" (click)="onSubmit()">Valid </button>
+
+        </form>
+    </div>
+</div>

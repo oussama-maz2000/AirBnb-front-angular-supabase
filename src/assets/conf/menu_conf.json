@@ -1,0 +1,66 @@
+[
+  {
+    "label": "ROUTES.HOME",
+    "link": "home",
+    "icon": "house-fill",
+    "color": "#0C1425",
+    "role": {
+      "externalRoleLevel": 0,
+      "internalRoleLevel": 0
+    }
+  },
+  {
+    "label": "ROUTES.ACCOUNT",
+    "link": "account",
+    "icon": "rocket-takeoff-fill",
+    "color": "#0C1425",
+    "abbreviation": "JDE",
+    "role": {
+      "externalRoleLevel": 0,
+      "internalRoleLevel": 0
+    }
+  },
+  {
+    "label": "ROUTES.ANNOUNCE",
+    "link": "announce",
+    "icon": "folder-fill",
+    "color": "#0C1425",
+    "role": {
+      "externalRoleLevel": 1,
+      "internalRoleLevel": 1
+    }
+  },
+  {
+    "label": "ROUTES.CALENDAR",
+    "link": "calendar",
+    "icon": "calendar-fill",
+    "color": "#0C1425",
+    "abbreviation": "adm",
+    "role": {
+      "externalRoleLevel": -1,
+      "internalRoleLevel": 2
+    }
+  },
+  {
+    "label": "ROUTES.SETTINGS",
+    "link": "settings",
+    "icon": "gear-wide",
+    "color": "#0C1425",
+    "abbreviation": "SUP",
+    "role": {
+      "externalRoleLevel": -1,
+      "internalRoleLevel": 0
+    }
+  },
+  {
+    "label": "ROUTES.LOGOUT",
+    "link": "logout",
+    "icon": "person",
+    "color": "#0C1425",
+    "abbreviation": "SUP",
+    "role": {
+      "externalRoleLevel": -1,
+      "internalRoleLevel": 0
+    }
+  }
+]

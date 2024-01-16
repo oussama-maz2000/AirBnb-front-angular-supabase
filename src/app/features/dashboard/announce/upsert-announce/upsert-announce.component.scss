@@ -1,0 +1,41 @@
+.keen-slider__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+img {
+  max-width: 90%;
+  height: auto;
+}
+ngx-dropzone {
+  /*  display: unset; */
+  align-items: unset;
+  cursor: pointer;
+  font-size: 16px;
+  border: solid 0.8px transparent;
+  height: 150px;
+  background-color: white;
+  transition-duration: 0.2s;
+  overflow-x: auto;
+  width: 100%;
+}
+
+/* ngx-dropzone >ngx-dropzone-preview {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  height: 99px;
+  justify-content: center;
+  margin: 10px;
+  max-width: 180px;
+  min-height: 99px;
+  min-width: 180px;
+  padding: 0px 20px;
+  position: relative;
+}
+ */
+ngx-dropzone-label {
+  font-weight: 400;
+  padding-left: 3px;
+  font-size: 15px;
+}

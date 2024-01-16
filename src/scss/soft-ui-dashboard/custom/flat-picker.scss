@@ -1,0 +1,15 @@
+.custom-flatpickr-input {
+  cursor: pointer !important;
+  //background: #0A48B3 !important;
+  background: #20293C !important;
+  width: 190px !important;
+  padding: 5px;
+  border: 0.5px solid #20293C;
+  border-radius: 8px;
+  color: #f8f9fe !important;
+  font-size: 0.80rem !important;
+  text-align: center;
+  transition: color 0.3s ease-in-out,
+  border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+
+}

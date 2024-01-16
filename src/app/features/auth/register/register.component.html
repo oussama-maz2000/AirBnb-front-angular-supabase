@@ -1,0 +1,223 @@
+<section>
+  <div class="page-header min-vh-100">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+
+
+          <div class="card card-plain">
+            <div class="card-header pb-0 text-start">
+
+              <h4 class="font-weight-bolder">{{'SIGN_UP_SCREEN.TITLE' | translate}}
+              </h4>
+              <p class="mb-0">{{'SIGN_UP_SCREEN.SUB_TITLE' | translate}} </p>
+
+
+            </div>
+            <div class="card-body">
+              <form role="form" [formGroup]="signUpForm" (ngSubmit)="register()">
+
+
+                <div class="form-group d-flex align-items-center justify-content-between">
+                  <span class="text-sm"> {{'SIGN_UP_SCREEN.I_AM' | translate}}<span class="text-bold">
+                      {{'SIGN_UP_SCREEN.COMPANY_TYPE' | translate}}</span>
+                  </span>
+                  <div class="form-check form-switch ms-3">
+                    <input class="form-check-input" type="checkbox" formControlName="isPro"
+                      id="flexSwitchCheckDefault30" checked="">
+                  </div>
+                </div>
+                <app-custom-input id="phone" label="phone" formControlName="phone" type="text"
+                  [icon]="iconNames.TelephoneFill" placeholder="SIGN_UP_SCREEN.FORM.PHONE_PLACEHOLDER">
+
+                  <app-custom-input-error *ngIf="signUpForm.controls['phone'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+                  <app-custom-input-error *ngIf="signUpForm.controls['phone'].errors?.['pattern']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.PHONE_INVALID'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+
+                <app-custom-input id="firstName" label="FirstName" formControlName="firstName" type="text"
+                  [icon]="iconNames.PersonFill" placeholder="SIGN_UP_SCREEN.FORM.NAME_PLACEHOLDER">
+
+                  <app-custom-input-error *ngIf="signUpForm.controls['firstName'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+
+                <app-custom-input id="lastName" label="lastName" formControlName="lastName" type="text"
+                  [icon]="iconNames.PersonFill" placeholder="SIGN_UP_SCREEN.FORM.LAST_NAME_PLACEHOLDER">
+
+                  <app-custom-input-error *ngIf="signUpForm.controls['lastName'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+
+                <app-custom-input id="email" label="email" formControlName="email" type="text"
+                  [icon]="iconNames.EnvelopeAtFill" placeholder="SIGN_UP_SCREEN.FORM.EMAIL_PLACEHOLDER">
+
+                  <app-custom-input-error *ngIf="signUpForm.controls['email'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+                  <app-custom-input-error *ngIf="signUpForm.controls['email'].errors?.['email']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.EMAIL'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+
+
+
+                <app-custom-input id="password" label="password" type="password" [icon]="iconNames.KeyFill"
+                  formControlName="password" placeholder="SIGN_UP_SCREEN.FORM.PASSWORD_PLACEHOLDER">
+                  <app-custom-input-error *ngIf="signUpForm.controls['password'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+                  <app-custom-input-error *ngIf="signUpForm.controls['password'].errors?.['pattern']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.PASSWORD_INVALID'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+                <app-custom-input id="confirmedPassword" label="confirmedPassword" type="text"
+                  formControlName="confirmedPassword" [icon]="iconNames.KeyFill"
+                  placeholder="SIGN_UP_SCREEN.FORM.PASSWORD_CONFIRM_PLACEHOLDER">
+                  <app-custom-input-error *ngIf="signUpForm.controls['confirmedPassword'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.REQUIRED'|translate}}
+                  </app-custom-input-error>
+
+                  <app-custom-input-error *ngIf="signUpForm.controls['confirmedPassword'].errors?.['mismatch']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.MISMATCH'|translate}}
+                  </app-custom-input-error>
+                </app-custom-input>
+
+                <label class="form-check-label mt-1">{{'SIGN_UP_SCREEN.FORM.PASSWORD_REQUIREMENTS'|translate}}</label>
+                <ul class="text-muted ps-4 mb-0" style="list-style: none">
+                  <li>
+                    <span class="btn-inner--icon text-custom-danger">
+                      <i-bs name="check-circle-fill" width="14" height="14" [ngStyle]="{'color': signUpForm.controls['password'].hasError('required') ||
+                              signUpForm.controls['password'].hasError('hasSpecialChar')? '#EE423D': '#05C985' }">
+                      </i-bs>
+                    </span>
+                    <span class="text-sm"
+                      style="margin-left: 10px;">{{'SIGN_UP_SCREEN.FORM.REQUIREMENTS.SPECIAL_CHARACTER'|translate}}</span>
+                  </li>
+
+                  <li>
+                    <span class="btn-inner--icon text-custom-danger">
+                      <i-bs name="check-circle-fill" width="14" height="14" [ngStyle]="{'color': signUpForm.controls['password'].hasError('required') ||
+                             signUpForm.controls['password'].hasError('hasSmallCase')? '#EE423D': '#05C985' }">
+                      </i-bs>
+                    </span>
+                    <span class="text-sm"
+                      style="margin-left: 10px;">{{'SIGN_UP_SCREEN.FORM.REQUIREMENTS.MINISCULE_LETTER'|translate}}</span>
+                  </li>
+                  <li>
+                    <span class="btn-inner--icon text-custom-danger">
+                      <i-bs name="check-circle-fill" width="14" height="14" [ngStyle]="{'color': signUpForm.controls['password'].hasError('required') ||
+                             signUpForm.controls['password'].hasError('hasCapitalCase')? '#EE423D': '#05C985' }">
+                      </i-bs>
+                    </span>
+                    <span class="text-sm"
+                      style="margin-left: 10px;">{{'SIGN_UP_SCREEN.FORM.REQUIREMENTS.CAPITAL_LETTER'|translate}}</span>
+                  </li>
+                  <li>
+                    <span class="btn-inner--icon text-custom-danger">
+                      <i-bs name="check-circle-fill" width="14" height="14" [ngStyle]="{'color': signUpForm.controls['password'].hasError('required') ||
+                              signUpForm.controls['password'].hasError('hasNumber')? '#EE423D': '#05C985' }">
+                      </i-bs>
+                    </span>
+                    <span class="text-sm"
+                      style="margin-left: 10px;">{{'SIGN_UP_SCREEN.FORM.REQUIREMENTS.MINIMUM_NUMBER'|translate}}</span>
+                  </li>
+                  <li>
+                    <span class="btn-inner--icon text-custom-danger">
+                      <i-bs name="check-circle-fill" width="14" height="14" [ngStyle]="{'color': signUpForm.controls['password'].hasError('required') ||
+                              signUpForm.controls['password'].hasError('minlength')? '#EE423D': '#05C985' }">
+                      </i-bs>
+                    </span>
+                    <span class="text-sm"
+                      style="margin-left: 10px;">{{'SIGN_UP_SCREEN.FORM.REQUIREMENTS.CHARACTERS_MINIMUM_8'|translate}}</span>
+                  </li>
+                </ul>
+
+
+                <div class="form-check form-check-info text-left mt-5">
+                  <input class="form-check-input" type="checkbox" value="" formControlName="termOfUse"
+                    id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    {{'SIGN_UP_SCREEN.FORM.ACCEPTATION_TERM_OF_USE'|translate}}
+                    <a href="../../../pages/privacy.html" class="text-dark font-weight-bolder">
+                      {{'SIGN_UP_SCREEN.FORM.TERM_OF_USE'|translate}}</a>
+                  </label>
+                  <app-custom-input-error *ngIf="signUpForm.controls['termOfUse'].errors?.['required']">
+                    {{'SIGN_UP_SCREEN.FORM.ERRORS.TERM_OF_USE'|translate}}
+                  </app-custom-input-error>
+                </div>
+
+
+                <!--div class="mb-3">
+                    <ng-hcaptcha formControlName="captcha"></ng-hcaptcha>
+                </div-->
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-lg bg-gradient-info btn-lg w-100 mt-4 mb-0 text-white">
+                    {{'SIGN_UP_SCREEN.FORM.SUBMIT_BUTTON'|translate}}
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+              <p class="mb-4 text-sm mx-auto font-weight-bolder">
+                {{'SIGN_UP_SCREEN.FORM.CONFIRMATION_EMAIL'|translate}}
+              </p>
+            </div>
+            <div class="card-footer text-center pt-0 px-lg-2 px-1">
+              <p class="mb-4 text-sm mx-auto">
+                {{'SIGN_UP_SCREEN.FORM.HAVE_ACCOUNT'|translate}}
+                <a class="text-info text-gradient font-weight-bold cursor-pointer"
+                  (click)="goToLogin()">{{'SIGN_UP_SCREEN.SIGN_IN'|translate}}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <a class="col-6 d-lg-flex d-none h-100 my-auto pe-0
+           position-absolute top-0 end-0 text-center justify-content-center flex-column" (click)="goTohHome()">
+
+          <div
+            class="position-relative bg-gradient-info h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+            <div class="position-absolute opacity-7 end-3 top-2 z-index-2">
+
+
+
+
+
+              <select class="form-select-sm" [(ngModel)]="lang" (change)="setLng(lang)">
+                <option selected>Language </option>
+                <option value="fr">Français</option>
+                <option value="ar">عربية</option>
+                <option value="en">Anglais</option>
+              </select>
+
+
+
+
+            </div>
+
+            <img src="../../../../assets/img/shapes/pattern-lines.svg" alt="pattern-lines"
+              class="position-absolute opacity-4 start-0">
+            <div class="position-relative">
+              <img class="max-width-500 w-100 position-relative z-index-2" src="../../../../assets/img/home.webp"
+                alt="DARKOUM">
+            </div>
+            <h4 class="mt-5 text-white font-weight-bolder">DARKOUM</h4>
+            <p class="text-white">{{'SIGN_UP_SCREEN.PARAGRAPHE'|translate}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<ng-template #validIcon>
+  <i-bs name="check-circle-fill" width="14" height="14" style="color: #05C985">
+  </i-bs>
+</ng-template>

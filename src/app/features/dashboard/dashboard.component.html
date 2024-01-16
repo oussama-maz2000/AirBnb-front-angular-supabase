@@ -1,0 +1,37 @@
+<mat-drawer-container class="w-100 h-100">
+  <mat-drawer #drawer mode="side" opened>
+    <div class="navigation">
+      <ul>
+        <ng-template ngFor let-i="index" let-navLink [ngForOf]="navLinks">
+          <li
+            [routerLinkActive]="['active', 'mb-2']"
+            [routerLinkActiveOptions]="{exact: true}"
+            [style.--clr]="navLink.immo_mnu_color"
+          >
+
+            <a class="" routerLink="{{navLink.immo_mnu_link}}" *ngIf="navLink.immo_mnu_link!='logout'; else logoutTemplate">
+              <span class="icon">
+                <i-bs [name]="navLink.immo_mnu_icon" height="18" width="18"></i-bs>
+              </span>
+              <span class="title">{{'ROUTES.'+navLink.immo_mnu_label | translate}}</span>
+            </a>
+            <ng-template  #logoutTemplate>
+              <a class="cursor-pointer" (click)="logOut()">
+              <span class="icon">
+                <i-bs [name]="navLink.immo_mnu_icon" height="18" width="18"></i-bs>
+              </span>
+                <span class="title">{{'ROUTES.'+navLink.immo_mnu_label | translate}}</span>
+              </a>
+            </ng-template>
+
+
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content style="background: #fff" class="min-vh-75">
+     <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+

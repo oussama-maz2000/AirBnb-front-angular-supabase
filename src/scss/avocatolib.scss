@@ -1,0 +1,44 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: "Gilroy", sans-serif !important;
+}
+
+.fieldInfo {
+  position: absolute;
+  //width: 90%;
+  padding: 5px 2%;
+  color: #fff;
+  top: -10px;
+  background: #EA0606;
+  border-radius: 5px;
+
+  &.firstName {
+    top: -37px;
+    left: 100px;
+  }
+
+  &::after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid #EA0606 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    left: 20px;
+    margin-left: -13px;
+    position: absolute;
+    width: 0;
+  }
+}
+
+md-sidenav,
+md-sidenav.md-locked-open,
+md-sidenav.md-closed.md-locked-open-add-active {
+  min-width: 200px !important;
+  width: 85vw !important;
+  max-width: 400px !important;
+}

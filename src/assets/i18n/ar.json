@@ -1,0 +1,214 @@
+{
+  "title": "هذا إختبار",
+  "SIGN_IN_SCREEN": {
+    "TITLE": "تسجيل الدخول",
+    "SUB_TITLE": "أدخل عنوان بريدك الإلكتروني لتلقي رمز المصادقة الخاص بك",
+    "OTP_SUB_TITLE": "أدخل رمز الدخول الخاص بك الذي تم استلامه عبر البريد الإلكتروني",
+    "PARAGRAPHE": "مهمة شركتنا هي القيادة. حان الوقت الآن ليكون الأمر على ما يرام ليكون رائعًا.",
+
+    "FORM": {
+      "EMAIL_PLACEHOLDER": "البريد الإلكتروني",
+      "PASSWORD_PLACEHOLDER": "كلمة السر",
+      "SUBMIT_BUTTON": "تسجيل الدخول",
+      "OTP_CODE": "استلم رمز تسجيل الدخول",
+      "HAVE_ACCOUNT": "ليس لديك حساب بعد ؟",
+      "OTP_NOT_RECEIVED": "ألم تتلق رمزاً ؟",
+      "RESET_PASSWORD": "نسيت كلمة المرور؟",
+      "RESIGTER_NOW": "سجل الآن",
+      "UPDATE": "تحديث"
+    }
+  },
+  "SIGN_UP_SCREEN": {
+    "TITLE": "سجل الآن",
+    "SUB_TITLE": "أدخل معلوماتك للتسجيل",
+    "I_AM": "أنا",
+    "COMPANY_TYPE": "محترف",
+    "SIGN_IN": "تسجيل الدخول",
+    "PARAGRAPHE": "مهمة شركتنا هي القيادة. حان الوقت الآن ليكون الأمر على ما يرام ليكون رائعًا.",
+
+    "FORM": {
+      "PHONE_PLACEHOLDER": "هاتف",
+      "NAME_PLACEHOLDER": "اسم",
+      "LAST_NAME_PLACEHOLDER": "اللقب",
+      "EMAIL_PLACEHOLDER": "البريد الإلكتروني",
+      "EMAIL_CONFIRM_PLACEHOLDER": "تأكيد بريدك الإلكتروني",
+      "PASSWORD_CONFIRM_PLACEHOLDER": "تأكد من كلمة السر الخاصة بك",
+      "PASSWORD_PLACEHOLDER": "كلمة السر",
+      "SUBMIT_BUTTON": "سجل الآن",
+      "HAVE_ACCOUNT": "هل لديك حساب ؟",
+      "CONFIRMATION_EMAIL": "سيتم إرسال رابط التحقق إلى عنوان بريدك الإلكتروني",
+      "ACCEPTATION_TERM_OF_USE": "أنا أوافق",
+      "TERM_OF_USE": "شروط استخدام",
+      "PASSWORD_REQUIREMENTS": "متطلبات كلمة المرور",
+
+      "ERRORS": {
+        "REQUIRED": "الرجاء إكمال هذا المجال",
+        "PATTERN": "رقم هاتف غير صالح",
+        "EMAIL": " بريد الإلكتروني غير صالح",
+        "MISMATCH": "لقد أدخلت كلمتين سر مختلفتين",
+        "TERM_OF_USE": "يجب أن تقبل شروط الاستخدام",
+        "PASSWORD_INVALID": "كلمة سر غير صالح"
+      },
+      "REQUIREMENTS": {
+        "SPECIAL_CHARACTER": "! # $ % ^ * الأحرف الخاصة",
+        "MINISCULE_LETTER": "يجب أن يكون لديك حرف صغيرة",
+        "CAPITAL_LETTER": "يجب أن يكون لديك حرف كبير",
+        "MINIMUM_NUMBER": "يجب أن يكون لديك الحد الأدنى من العدد",
+        "CHARACTERS_MINIMUM_8": "لا تقل كلمة السرّ عن 8 أحرف"
+      }
+    },
+    "ERRORS": {
+      "User already registered": "المستخدم موجود بالفعل"
+    }
+  },
+  "UPSERT_ANNOUNCE_SCREEN": {
+    "BIG_TITLE": " اجعل ملكية أحلامك",
+    "PARAGRAPHE_UNDER_TITLE": "نحاول باستمرار التعبير عن أنفسنا وتحقيق أحلامنا. إذا كانت لديك الفرصة للعب. ",
+    "PRODUCT_INFORMATION_TITLE": "معلومات",
+    "CHARACTERISTICS_TITLE": " الخصائص",
+    "IMAGES_TITLE": "صور",
+    "YES": "نعم",
+    "NO": "لا",
+    "VALID_BUTTON": "حفظ",
+    "PICTURES": "صور",
+    "PICTURES_DRAG_SELECT": " اسحب أو حدد صورًا",
+
+    "INFORMATION_FORM": {
+      "ESTATE": "مجال",
+      "ESTATE_TYPE": {
+        "HOUSE": "منزل",
+        "APARTMENT": "شقة"
+      },
+      "ANNONCE": "إعلان",
+      "ANNONCE_TYPE": {
+        "SALE": "بيع",
+        "RENT": "إيجار"
+      },
+      "TITLE": "عنوان",
+      "ADDRESS": "عنوان",
+      "ADDRESS_PLACE_HOLDER": " عنوان",
+      "WILLAYA": "مدينة",
+      "CODE_POSTAL": "الرمز البريدي",
+      "CODE_POSTAL_PLACE_HOLDER": "الرمز البريدي",
+      "JURIDICAL": "قانونية",
+      "JURIDICAL_TYPE": {
+        "AADL": "عدل",
+        "LPP": "السكن الترقوي العمومي",
+        "LCP": " السكن الاجتماعي",
+        "LP": " السكن الترقوي ",
+        "LPA": "السكن الترقوي مدعم",
+        "CONTRACT": "عقد"
+      },
+      "DESCRIPTION": "وصف",
+      "PRICE": "سعر",
+      "PRICE_PLACE_HOLDER": "سعر",
+      "DESCRIPTION_OPTIONAL": "اختياري"
+    },
+
+    "DETAILS_TITLE": "تفاصيل",
+    "DETAILS_FORM": {
+      "SURFACE": " (م ²) المساحة",
+      "PIECE": "قطعة",
+      "PIECE_TYPE": {
+        "F1": "F1",
+        "F2": "F2",
+        "F3": "F3",
+        "F4": "F4",
+        "F5": "F5",
+        "F6": "F6",
+        "MORE": "أكثر"
+      },
+      "FLOOR": "طابق",
+      "FIRST_FLOOR": "طابق أرضي",
+      "FACADE": "واجهة",
+      "STATE_PROPERTY": "حالة الملكية",
+      "STATE_PROPERTY_TYPE": {
+        "FINISHED_LUX": "مكتملة",
+        "SIMPLE": "عادية",
+        "CARCASS": "مشردة"
+      },
+      "FURNISHED": "مؤثثة",
+      "NEGOTIABLE": "قابل للتفاوض"
+    },
+
+    "CHARACTERISTICS_FORM": {
+      "AIR_CONDITIONING": "مكيف هواء",
+      "AIR_CONDITIONING_TYPE": {
+        "EXIST": "متوفر",
+        "NO_EXIST": "غير متوفر"
+      },
+
+      "HEATING": "تدفئة",
+      "HEATING_TYPE": {
+        "CENTRAL": "مركزي",
+        "CHIMNEY": "مدخنة"
+      },
+      "CITY": "الحي",
+      "CITY_TYPE": {
+        "CLOSE": "مغلق",
+        "OPEN": "مفتوح"
+      },
+      "KITCHEN": "مطبخ",
+      "KITCHEN_TYPE": {
+        "SEPERATE": "منفصل",
+        "OPEN": "مفتوح"
+      },
+      "AVAILABILITY": "متاح",
+      "ADVANCE_PAYMENT": "الدفع المسبق",
+      "ADVANCE_TIME": {
+        "1_MONTH": "1 شهر",
+        "3_MONTH": "3 شهر",
+        "6_MONTH": "6 شهر",
+        "12_MONTH": "12 شهر"
+      },
+
+      "PUBLIC_SERVICE": "الخدمة العامة",
+      "PUBLIC_SERVICE_CHOICE": {
+        "1": "مصعد",
+        "2": "الاتصال الداخلي",
+        "3": "منفذ الرقائق",
+        "4": "حارس",
+        "5": "موقف سيارات",
+        "6": "انترنيت",
+        "7": "صحن جماعي"
+      },
+      "PUBLIC_UTILITY": "المنافع العمومية",
+      "PUBLIC_UTILITY_CHOICE": {
+        "1": "حديقة عامة",
+        "2": "قصر العدالة",
+        "3": " ابتدائية",
+        "4": " ثانوية",
+        "5": "متوسطة ",
+        "6": "بنك",
+        "7": "مسجد",
+        "8": "جامعة",
+        "9": "نقل",
+        "10": "مستشفى",
+        "11": "عيادة",
+        "12": "متاجر"
+      },
+
+      "HYGIENE": "نظافة",
+      "HYGIENE_CHOICE": {
+        "1": "خزان مياه",
+        "2": "مضخة مياه",
+        "3": "مرحاض منفصل",
+        "4": "مرحاض غير منفصل",
+        "5": "حمام ",
+        "6": "سخان مياه"
+      },
+      "SETTING_LOCATION": "الإطار والحالة",
+      "SELECT_ITEMS": "اختيار العناصر"
+    },
+    "ERROR": {
+      "ESTATE_REQUIRED": "اختر ملكية",
+      "ANNONCE_REQUIRED": "اختر نوع الإعلان",
+      "ADDRESS_REQUIRED": "أدخل العنوان",
+      "CITY_REQUIRED": "اختر مدينة ",
+      "POSTAL_REQUIRED": "أدخل الرمز البريدي",
+      "JURIDICAL_REQUIRED": "اختر النوع القانوني",
+      "PRICE_REQUIRED": "أدخل السعر",
+      "IMAGES_REQUIRED": "اختر صورة واحدة أو أكثر "
+    }
+  }
+}

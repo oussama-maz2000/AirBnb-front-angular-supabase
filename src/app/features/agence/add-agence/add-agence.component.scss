@@ -1,0 +1,70 @@
+input {
+  width: 26em;
+  font-size: 16px;
+  border: solid 1px #929292;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
+@media screen and (max-width: 480px) {
+  .input-group {
+    width: 100%;
+  }
+}
+
+.form-label {
+  font-family: "Nunito", serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.input-group {
+  width: 80%;
+}
+.form-select {
+  width: 26em;
+  font-size: 16px;
+  border: solid 1px #929292;
+  height: 42px;
+  color: #2b2b2b;
+  background-color: white;
+  transition-duration: 0.2s;
+}
+
+#btn {
+  background: #ff385c;
+  color: rgb(255, 255, 255);
+  transition-duration: 0.2s;
+  border: none transparent;
+  height: 42px;
+  border-radius: 8px;
+  font-size: 16px;
+  min-width: 125px;
+  width: 40%;
+}
+
+.error-message {
+  color: rgb(197, 42, 42);
+  /* line-height: 18px; */
+  font-size: 12px;
+  font-family: arial;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid rgb(238, 103, 103);
+  background-color: rgb(247, 231, 231);
+}
+
+.hr-line {
+  width: 100%;
+  color: #ff385c;
+  border: 0.3px solid #ff385c;
+  opacity: unset;
+  border-radius: 5px;
+}
+.space-error-msg {
+  display: inline-block;
+  /* height: 1px; */
+}
