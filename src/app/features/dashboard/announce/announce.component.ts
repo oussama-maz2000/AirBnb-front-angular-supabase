@@ -30,7 +30,7 @@ export class AnnounceComponent {
     action: UpsertDialogData<AnnounceImmo>['action'],
     currentValue?: UpsertDialogData<AnnounceImmo>['currentValue']
   ) {
-    this.dialogService.open(UpsertAnnounceDialogComponent, {
+    /* this.dialogService.open(UpsertAnnounceDialogComponent, {
       height: '500px',
       width: '800px',
       data: {
@@ -41,7 +41,7 @@ export class AnnounceComponent {
           edit: (realEstateAd: AnnounceImmo) => of('edit'),
         },
       },
-    });
+    }); */
   }
   goToUpsert() {
     this.router.navigate(['dashboard/upsert-announce']);

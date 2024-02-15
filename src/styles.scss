@@ -6,3 +6,10 @@
 @import "scss/avocatolib";
 @import "scss/custom/sidebar";
 @import "scss/custom/ng-select";
+@import '~quill/dist/quill.snow.css';
+@import 'ag-grid-community/styles/ag-grid.css';
+@import 'ag-grid-community/styles/ag-theme-quartz.css';
+
+.ngneat-dialog-content{
+    overflow: auto !important;
+  }

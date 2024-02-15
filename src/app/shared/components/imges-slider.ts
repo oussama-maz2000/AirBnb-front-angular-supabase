@@ -67,13 +67,12 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 export class ImgesSlider implements OnInit {
   public iconNames = IconNamesEnum;
 
-  @Input({ required: true }) imageList: string[];
+  @Input({ required: true }) imageList:readonly string[];
   currentIndex = 0;
   leftIcon: IconNamesEnum = this.iconNames.ArrowLeftCircleFill;
   righIcon: IconNamesEnum = this.iconNames.ArrowRightCircleFill;
   constructor() {}
   ngOnInit(): void {
-    console.log(this.imageList);
   }
 
   previousImg() {

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+<div class="d-flex justify-content-end align-items-center mt-2">
+  <button class="btn btn-md bg-water-violeta-state btn-md  mt-4 mb-2 text-white" type="submit" (click)="newAnnonce()">
+    Nouvelle Annonce
+  </button>
+</div>
+<div class="card">
+    <div class="card-body">
+<ag-grid-angular
+class="ag-theme-quartz"
+  style="height: 600px;
+  width: 100%;"
+    [gridOptions]="gridOptions"
+    [columnDefs]="colDefs"
+    [rowData]="rowData"
+    [pagination]="true">
+  </ag-grid-angular>
+</div>
+</div>
+</div>
+

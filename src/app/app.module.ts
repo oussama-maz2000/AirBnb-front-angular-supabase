@@ -18,6 +18,9 @@ import { environment } from '../environments/environment.prod';
 import { SettingsEffects } from './store/effects/settings-effects';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Spinner } from './shared/components/spinner';
+import { AnnonceEffects } from './store/effects/annonce-effects';
+import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,7 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
         strictActionImmutability: false,
       },
     }),
-    EffectsModule.forRoot([AuthEffects, SettingsEffects]),
+    EffectsModule.forRoot([AuthEffects, SettingsEffects,AnnonceEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -54,6 +57,8 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
     AnnounceComponent,
+    Spinner,
+    NgxBootstrapIconsModule.pick(allIcons)
   ],
 })
 export class AppModule {}

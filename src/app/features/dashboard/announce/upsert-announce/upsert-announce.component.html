@@ -1,3 +1,5 @@
+<input type="text" #inputValue>
+<button (click)="onClick(inputValue)">click</button>
 <div class="container-fluid">
   <div class="d-flex justify-content-between align-items-baseline mt-4">
     <div>
@@ -11,54 +13,57 @@
       {{'UPSERT_ANNOUNCE_SCREEN.VALID_BUTTON'|translate}}
     </button>
   </div>
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-body">
-          <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.IMAGES_TITLE'|translate}}
 
-          </h4>
-          <form [formGroup]="imagesForm">
-            <div class="row ">
-              <div class="col-sm-12 mb-2">
-                <div class="form-control">
-                  <ngx-dropzone class="bg-white" (change)="onSelect($event)">
-                    <ngx-dropzone-label>{{'UPSERT_ANNOUNCE_SCREEN.PICTURES_DRAG_SELECT' |
-                      translate}}</ngx-dropzone-label>
-                    <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
-                      <ngx-dropzone-label>
-                        {{ f.name }}
+  <form role="form" [formGroup]="annonceForm">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.IMAGES_TITLE'|translate}}
 
-                      </ngx-dropzone-label>
-                    </ngx-dropzone-preview>
-                  </ngx-dropzone>
+            </h4>
+            <form>
+              <!-- IMAGES -->
+              <div class="row ">
+                <div class="col-sm-12 mb-2">
+                  <div class="form-control">
+                    <ngx-dropzone class="bg-white" (change)="onSelect($event)">
+                      <ngx-dropzone-label>{{'UPSERT_ANNOUNCE_SCREEN.PICTURES_DRAG_SELECT' |
+                        translate}}</ngx-dropzone-label>
+                      <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+                        <ngx-dropzone-label>
+                          {{ f.name }}
+
+                        </ngx-dropzone-label>
+                      </ngx-dropzone-preview>
+                    </ngx-dropzone>
+                  </div>
+                  <app-custom-input-error *ngIf="requiredInformation&&(files.length<1 || !images.valid)">
+                    {{'UPSERT_ANNOUNCE_SCREEN.ERROR.IMAGES_REQUIRED'|translate}}
+                  </app-custom-input-error>
                 </div>
-                <app-custom-input-error *ngIf="(files.length<1 || !images.valid)">
-                  {{'UPSERT_ANNOUNCE_SCREEN.ERROR.IMAGES_REQUIRED'|translate}}
-                </app-custom-input-error>
-              </div>
 
-              <div class="col-sm-12">
-                <app-Imges-Slider *ngIf="imageUrlList.length>0" [imageList]="imageUrlList"></app-Imges-Slider>
+                <div class="col-sm-12">
+                  <app-Imges-Slider *ngIf="imageUrlList.length>0" [imageList]="imageUrlList"></app-Imges-Slider>
+                </div>
+                <!-- <div class="col-sm-1">
+                  <button class="btn btn-sm bg-gradient-waterViolita btn-md  mt-2 mb-0 text-white" type="button"
+                    (click)="resetImagesForm()">
+                    Reset
+                  </button>
+                </div> -->
               </div>
-              <div class="col-sm-1">
-                <button class="btn btn-sm bg-gradient-waterViolita btn-md  mt-2 mb-0 text-white" type="button"
-                  (click)="resetImagesForm()">
-                  Reset
-                </button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
 
+<!-- DETAILS -->
+        <div class="card mt-4 mb-2">
+          <div class="card-body">
+            <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_TITLE'|translate}}
 
-      <div class="card mt-4">
-        <div class="card-body">
-          <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_TITLE'|translate}}
+            </h4>
 
-          </h4>
-          <form role="form" [formGroup]="detailsForm">
             <div class="row">
               <div class="col-sm-6">
                 <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.PIECE'|translate}}</label>
@@ -71,8 +76,14 @@
                   <option value="f6">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.PIECE_TYPE.F6'|translate}}</option>
                   <option value="more">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.PIECE_TYPE.MORE'|translate}}</option>
                 </select>
+                <div style="display: inline-block;">
+                  <app-custom-input-error
+                    *ngIf="(requiredInformation||getField('piece')?.touched) && getField('piece')?.invalid">
+                    {{'UPSERT_ANNOUNCE_SCREEN.ERROR.ESTATE_REQUIRED'|translate}}
+                  </app-custom-input-error>
+                </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6" formGroupName="details">
                 <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.FLOOR'|translate}}</label>
                 <select class="form-select" formControlName="floor">
                   <option value="0">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.FIRST_FLOOR'|translate}}</option>
@@ -90,36 +101,46 @@
 
                 </select>
               </div>
-              <div class="col-sm-5">
+              <div class="col-sm-5" formGroupName="details" >
                 <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.FACADE'|translate}}</label>
                 <input class="form-control" type="number"
                   placeholder="{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.FACADE'|translate}}" formControlName="facade">
               </div>
               <div class="col-sm-7">
                 <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.SURFACE'|translate}}</label>
+                <div class="input-group">
                 <input class="form-control" type="tel"
-                  placeholder="{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.SURFACE'|translate}}" formControlName="surface">
+                  placeholder="{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.SURFACE'|translate}}" formControlName="surface" aria-label="srf">
+                  <span class="input-group-text" id="srf">m²</span>
+                </div>
+                  <div style="display: inline-block;">
+                    <app-custom-input-error
+                      *ngIf="(requiredInformation||getField('surface')?.touched) && getField('surface')?.invalid">
+                      {{'UPSERT_ANNOUNCE_SCREEN.ERROR.ESTATE_REQUIRED'|translate}}
+                    </app-custom-input-error>
+                  </div>
               </div>
-              <div class="col-sm-12">
+              <div class="col-sm-12" formGroupName="details">
                 <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.STATE_PROPERTY'|translate}}</label>
                 <select class="form-select" formControlName="stateProperty">
                   <option value="finished">
                     {{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.STATE_PROPERTY_TYPE.FINISHED_LUX'|translate}}
                   </option>
-                  <option value="simple">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.STATE_PROPERTY_TYPE.SIMPLE'|translate}}
+                  <option value="simple">
+                    {{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.STATE_PROPERTY_TYPE.SIMPLE'|translate}}
                   </option>
                   <option value="carcass">
                     {{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.STATE_PROPERTY_TYPE.CARCASS'|translate}}</option>
                 </select>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6" formGroupName="details">
                 <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.FURNISHED'|translate}}</label>
                 <select class="form-select" formControlName="furnished">
                   <option value="yes">{{'UPSERT_ANNOUNCE_SCREEN.YES'|translate}}</option>
                   <option value="no">{{'UPSERT_ANNOUNCE_SCREEN.NO'|translate}}</option>
                 </select>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-6" formGroupName="details">
                 <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.DETAILS_FORM.NEGOTIABLE'|translate}}</label>
                 <select class="form-select" formControlName="negotiable">
                   <option value="yes">{{'UPSERT_ANNOUNCE_SCREEN.YES'|translate}}</option>
@@ -127,18 +148,18 @@
                 </select>
               </div>
             </div>
-          </form>
+
+          </div>
         </div>
+
+<!-- INFORMATION -->
       </div>
+      <div class="col-sm-8 ">
+        <div class="card ">
+          <div class="card-body">
+            <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.PRODUCT_INFORMATION_TITLE'|translate}}
+            </h4>
 
-
-    </div>
-    <div class="col-sm-8 ">
-      <div class="card ">
-        <div class="card-body">
-          <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.PRODUCT_INFORMATION_TITLE'|translate}}
-          </h4>
-          <form role="form" [formGroup]="informationPropertyForm">
             <div class="row">
 
               <div class="col-sm-6">
@@ -151,35 +172,38 @@
                 </select>
 
                 <div style="display: inline-block;">
-                  <app-custom-input-error *ngIf="(InformationFormValidation||estate?.touched) && estate?.invalid">
+                  <app-custom-input-error
+                    *ngIf="(requiredInformation||getField('estate')?.touched) && getField('estate')?.invalid">
                     {{'UPSERT_ANNOUNCE_SCREEN.ERROR.ESTATE_REQUIRED'|translate}}
                   </app-custom-input-error>
                 </div>
               </div>
               <div class="col-sm-6">
                 <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.ANNONCE'|translate}}</label>
-                <select class="form-select" formControlName="annonce">
+                <select class="form-select" formControlName="type">
                   <option value="sale">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.ANNONCE_TYPE.SALE'|translate}}
                   </option>
                   <option value="rent">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.ANNONCE_TYPE.RENT'|translate}}
                   </option>
                 </select>
                 <div style="display: inline-block;">
-                  <app-custom-input-error *ngIf="(InformationFormValidation||annonce?.touched) && annonce?.invalid">
+                  <app-custom-input-error
+                    *ngIf="(requiredInformation||getField('type')?.touched) && getField('type')?.invalid">
                     {{'UPSERT_ANNOUNCE_SCREEN.ERROR.ANNONCE_REQUIRED'|translate}}
                   </app-custom-input-error>
                 </div>
               </div>
 
 
-              <div class="col-sm-6  ">
+              <div class="col-sm-6" formGroupName="details">
                 <label class="mt-2" for="addressInput">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.ADDRESS' |
                   translate}}</label>
                 <input class="form-control" type="text" id="addressInput"
                   placeholder="{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.ADDRESS_PLACE_HOLDER' | translate}}"
                   formControlName="address">
                 <div style="display: inline-block;">
-                  <app-custom-input-error *ngIf="(InformationFormValidation||address?.touched) && address?.invalid">
+                  <app-custom-input-error
+                    *ngIf="(requiredInformation||getField('address')?.touched) && getField('address')?.invalid">
                     {{'UPSERT_ANNOUNCE_SCREEN.ERROR.ADDRESS_REQUIRED'|translate}}
                   </app-custom-input-error>
                 </div>
@@ -192,7 +216,8 @@
                   </option>
                 </select>
                 <div style="display: inline-block;">
-                  <app-custom-input-error *ngIf="(InformationFormValidation||willaya?.touched) && willaya?.invalid">
+                  <app-custom-input-error
+                    *ngIf="(requiredInformation||getField('willaya')?.touched) && getField('willaya')?.invalid">
                     {{'UPSERT_ANNOUNCE_SCREEN.ERROR.CITY_REQUIRED'|translate}}
                   </app-custom-input-error>
                 </div>
@@ -203,7 +228,7 @@
                   placeholder="{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.CODE_POSTAL_PLACE_HOLDER'|translate}}">
                 <div style="display: inline-block;">
                   <app-custom-input-error
-                    *ngIf="(InformationFormValidation||codePostal?.touched) && codePostal?.invalid">
+                    *ngIf="(requiredInformation||getField('codePostal')?.touched) && getField('codePostal')?.invalid">
                     {{'UPSERT_ANNOUNCE_SCREEN.ERROR.POSTAL_REQUIRED'|translate}}
                   </app-custom-input-error>
                 </div>
@@ -212,91 +237,16 @@
 
 
               <div class="col-sm-6">
-                <div>
+                <div formGroupName="details">
                   <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.DESCRIPTION'|translate}}</label>
                   <p class="form-text text-muted text-xs ms-1 d-inline">
                     ({{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.DESCRIPTION_OPTIONAL'|translate}})
                   </p>
-                  <div class="ql-toolbar ql-snow">
-                    <span class="ql-formats"><span class="ql-header ql-picker"><span class="ql-picker-label"
-                          tabindex="0" role="button" aria-expanded="false" aria-controls="ql-picker-options-0"><svg
-                            viewBox="0 0 18 18">
-                            <polygon class="ql-stroke" points="7 11 9 13 11 11 7 11"></polygon>
-                            <polygon class="ql-stroke" points="7 7 9 5 11 7 7 7"></polygon>
-                          </svg></span><span class="ql-picker-options" aria-hidden="true" tabindex="-1"
-                          id="ql-picker-options-0"><span tabindex="0" role="button" class="ql-picker-item"
-                            data-value="1"></span><span tabindex="0" role="button" class="ql-picker-item"
-                            data-value="2"></span><span tabindex="0" role="button" class="ql-picker-item"
-                            data-value="3"></span><span tabindex="0" role="button"
-                            class="ql-picker-item"></span></span></span><select class="ql-header"
-                        style="display: none;">
-                        <option value="1"></option>
-                        <option value="2"></option>
-                        <option value="3"></option>
-                        <option selected="selected"></option>
-                      </select></span><span class="ql-formats"><button type="button" class="ql-bold"><svg
-                          viewBox="0 0 18 18">
-                          <path class="ql-stroke"
-                            d="M5,4H9.5A2.5,2.5,0,0,1,12,6.5v0A2.5,2.5,0,0,1,9.5,9H5A0,0,0,0,1,5,9V4A0,0,0,0,1,5,4Z">
-                          </path>
-                          <path class="ql-stroke"
-                            d="M5,9h5.5A2.5,2.5,0,0,1,13,11.5v0A2.5,2.5,0,0,1,10.5,14H5a0,0,0,0,1,0,0V9A0,0,0,0,1,5,9Z">
-                          </path>
-                        </svg></button><button type="button" class="ql-italic"><svg viewBox="0 0 18 18">
-                          <line class="ql-stroke" x1="7" x2="13" y1="4" y2="4"></line>
-                          <line class="ql-stroke" x1="5" x2="11" y1="14" y2="14"></line>
-                          <line class="ql-stroke" x1="8" x2="10" y1="14" y2="4"></line>
-                        </svg></button><button type="button" class="ql-underline"><svg viewBox="0 0 18 18">
-                          <path class="ql-stroke" d="M5,3V9a4.012,4.012,0,0,0,4,4H9a4.012,4.012,0,0,0,4-4V3"></path>
-                          <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="12" x="3" y="15"></rect>
-                        </svg></button><button type="button" class="ql-link"><svg viewBox="0 0 18 18">
-                          <line class="ql-stroke" x1="7" x2="11" y1="7" y2="11"></line>
-                          <path class="ql-even ql-stroke"
-                            d="M8.9,4.577a3.476,3.476,0,0,1,.36,4.679A3.476,3.476,0,0,1,4.577,8.9C3.185,7.5,2.035,6.4,4.217,4.217S7.5,3.185,8.9,4.577Z">
-                          </path>
-                          <path class="ql-even ql-stroke"
-                            d="M13.423,9.1a3.476,3.476,0,0,0-4.679-.36,3.476,3.476,0,0,0,.36,4.679c1.392,1.392,2.5,2.542,4.679.36S14.815,10.5,13.423,9.1Z">
-                          </path>
-                        </svg></button></span><span class="ql-formats"><button type="button" class="ql-list"
-                        value="ordered"><svg viewBox="0 0 18 18">
-                          <line class="ql-stroke" x1="7" x2="15" y1="4" y2="4"></line>
-                          <line class="ql-stroke" x1="7" x2="15" y1="9" y2="9"></line>
-                          <line class="ql-stroke" x1="7" x2="15" y1="14" y2="14"></line>
-                          <line class="ql-stroke ql-thin" x1="2.5" x2="4.5" y1="5.5" y2="5.5"></line>
-                          <path class="ql-fill"
-                            d="M3.5,6A0.5,0.5,0,0,1,3,5.5V3.085l-0.276.138A0.5,0.5,0,0,1,2.053,3c-0.124-.247-0.023-0.324.224-0.447l1-.5A0.5,0.5,0,0,1,4,2.5v3A0.5,0.5,0,0,1,3.5,6Z">
-                          </path>
-                          <path class="ql-stroke ql-thin"
-                            d="M4.5,10.5h-2c0-.234,1.85-1.076,1.85-2.234A0.959,0.959,0,0,0,2.5,8.156">
-                          </path>
-                          <path class="ql-stroke ql-thin"
-                            d="M2.5,14.846a0.959,0.959,0,0,0,1.85-.109A0.7,0.7,0,0,0,3.75,14a0.688,0.688,0,0,0,.6-0.736,0.959,0.959,0,0,0-1.85-.109">
-                          </path>
-                        </svg></button><button type="button" class="ql-list" value="bullet"><svg viewBox="0 0 18 18">
-                          <line class="ql-stroke" x1="6" x2="15" y1="4" y2="4"></line>
-                          <line class="ql-stroke" x1="6" x2="15" y1="9" y2="9"></line>
-                          <line class="ql-stroke" x1="6" x2="15" y1="14" y2="14"></line>
-                          <line class="ql-stroke" x1="3" x2="3" y1="4" y2="4"></line>
-                          <line class="ql-stroke" x1="3" x2="3" y1="9" y2="9"></line>
-                          <line class="ql-stroke" x1="3" x2="3" y1="14" y2="14"></line>
-                        </svg></button></span><span class="ql-formats"><button type="button" class="ql-clean"><svg
-                          class="" viewBox="0 0 18 18">
-                          <line class="ql-stroke" x1="5" x2="13" y1="3" y2="3"></line>
-                          <line class="ql-stroke" x1="6" x2="9.35" y1="12" y2="3"></line>
-                          <line class="ql-stroke" x1="11" x2="15" y1="11" y2="15"></line>
-                          <line class="ql-stroke" x1="15" x2="11" y1="11" y2="15"></line>
-                          <rect class="ql-fill" height="1" rx="0.5" ry="0.5" width="7" x="2" y="14"></rect>
-                        </svg></button></span>
+                  <div>
+                    <quill-editor class="content-editor" [modules]="quillConfig" formControlName="description">
+                    </quill-editor>
                   </div>
-                  <div id="edit-deschiption-edit" class="ql-container ql-snow" style="height: 140px;">
-                    <div class="ql-editor" data-gramm="false" contenteditable="true">
-                      <p></p>
-                    </div>
-                    <div class="ql-clipboard" contenteditable="true" tabindex="-1"></div>
-                    <div class="ql-tooltip ql-hidden"><a class="ql-preview" rel="noopener noreferrer" target="_blank"
-                        href="about:blank"></a><input type="text" data-formula="e=mc^2" data-link="https://quilljs.com"
-                        data-video="Embed URL"><a class=" ql-action"></a><a class="ql-remove"></a></div>
-                  </div>
+
 
                 </div>
               </div>
@@ -304,7 +254,7 @@
 
 
 
-                <div class="col-sm-12">
+                <div class="col-sm-12" formGroupName="details">
                   <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.JURIDICAL'|translate}}</label>
                   <select class="form-select" formControlName="juridical">
                     <option value="AADL">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.JURIDICAL_TYPE.AADL'|translate}}
@@ -326,18 +276,24 @@
                   </select>
                   <div style="display: inline-block;">
                     <app-custom-input-error
-                      *ngIf="(InformationFormValidation||juridical?.touched) && juridical?.invalid">
+                      *ngIf="(requiredInformation||getField('juridical')?.touched) && getField('juridical')?.invalid">
                       {{'UPSERT_ANNOUNCE_SCREEN.ERROR.JURIDICAL_REQUIRED'|translate}}
                     </app-custom-input-error>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <label class="mt-2">{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.PRICE'|translate}}</label>
-                  <input class="form-control" type="text"
+                  <div class="input-group">
+                    <input class="form-control" type="tel"
                     placeholder="{{'UPSERT_ANNOUNCE_SCREEN.INFORMATION_FORM.PRICE_PLACE_HOLDER'|translate}}"
-                    formControlName="price">
+                    [value]="getField('amount')?.value | currency:'DZD'"
+                    formControlName="price"
+                    aria-describedby="prc">
+                    <span class="input-group-text" id="prc">DZD</span>
+                  </div>
                   <div style="display: inline-block;">
-                    <app-custom-input-error *ngIf="(InformationFormValidation||price?.touched) && price?.invalid">
+                    <app-custom-input-error
+                      *ngIf="(requiredInformation||getField('price')?.touched) && getField('price')?.invalid">
                       {{'UPSERT_ANNOUNCE_SCREEN.ERROR.PRICE_REQUIRED'|translate}}
                     </app-custom-input-error>
                   </div>
@@ -350,74 +306,80 @@
 
               </div>
             </div>
-          </form>
+
+          </div>
         </div>
-      </div>
-
-      <div class="card my-4">
-        <div class="card-body">
-          <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_TITLE'|translate}}</h4>
-          <form role="form" [formGroup]="characteristicsForm">
-            <div class="row">
-
-              <div class="col-sm-6" *ngFor="let dropdown of dropdowns; let i = index">
-
-                <label class="mt-3">{{ 'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.'+dropdown.label_upper | translate
-                  }}</label>
-
-                <ng-select class="ng-select avocatolib" [items]="dropdown.items" [multiple]=" true"
-                  [closeOnSelect]="false" [searchable]="false" bindLabel="name"
-                  placeholder="{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.SELECT_ITEMS'|translate}}"
-                  [formControlName]="dropdown.label_form">
-
-                </ng-select>
 
 
+
+<!-- CHRACTERISTCS -->
+        <div class="card my-4">
+          <div class="card-body">
+            <h4 class="font-weight-bolder">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_TITLE'|translate}}</h4>
+            <form role="form" formGroupName="details">
+              <div class="row">
+
+                <div class="col-sm-6" *ngFor="let dropdown of dropdowns; let i = index">
+
+                  <label class="mt-3">{{ 'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.'+dropdown.label_upper |
+                    translate
+                    }}</label>
+
+                  <ng-select class="ng-select avocatolib" [items]="getTranslatedItems(dropdown)" [multiple]=" true"
+                    [closeOnSelect]="false" [searchable]="false" bindLabel="name"
+                    placeholder="{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.SELECT_ITEMS'|translate}}"
+                    [formControlName]="dropdown.label_form">
+
+                  </ng-select>
+
+
+                </div>
+                <div class="col-sm-3">
+                  <label
+                    class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING'|translate}}</label>
+                  <select class="form-select" formControlName="airContioning">
+                    <option value=false>
+                      {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING_TYPE.EXIST'|translate}}</option>
+                    <option value=true>
+                      {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING_TYPE.NO_EXIST'|translate}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-sm-3">
+                  <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING'|translate}}</label>
+                  <select class="form-select" formControlName="heating">
+                    <option value="Central">
+                      {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING_TYPE.CENTRAL'|translate}}</option>
+                    <option value="Chemini">
+                      {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING_TYPE.CHIMNEY'|translate}}</option>
+                  </select>
+                </div>
+
+                <div class="col-sm-3">
+                  <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY'|translate}}</label>
+                  <select class="form-select" formControlName="city">
+                    <option value="Close">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY_TYPE.CLOSE'|translate}}
+                    </option>
+                    <option value="Open">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY_TYPE.OPEN'|translate}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-sm-3">
+                  <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN'|translate}}</label>
+                  <select class="form-select" formControlName="kitchen">
+                    <option value="seperate">
+                      {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN_TYPE.SEPERATE'|translate}}</option>
+                    <option value="open">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN_TYPE.OPEN'|translate}}
+                    </option>
+                  </select>
+                </div>
               </div>
-              <div class="col-sm-3">
-                <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING'|translate}}</label>
-                <select class="form-select" formControlName="airContioning">
-                  <option value=false>
-                    {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING_TYPE.EXIST'|translate}}</option>
-                  <option value=true>
-                    {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.AIR_CONDITIONING_TYPE.NO_EXIST'|translate}}</option>
-                </select>
-              </div>
-
-              <div class="col-sm-3">
-                <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING'|translate}}</label>
-                <select class="form-select" formControlName="heating">
-                  <option value="Central">
-                    {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING_TYPE.CENTRAL'|translate}}</option>
-                  <option value="Chemini">
-                    {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.HEATING_TYPE.CHIMNEY'|translate}}</option>
-                </select>
-              </div>
-
-              <div class="col-sm-3">
-                <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY'|translate}}</label>
-                <select class="form-select" formControlName="city">
-                  <option value="Close">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY_TYPE.CLOSE'|translate}}
-                  </option>
-                  <option value="Open">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.CITY_TYPE.OPEN'|translate}}
-                  </option>
-                </select>
-              </div>
-
-              <div class="col-sm-3">
-                <label class="mt-3">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN'|translate}}</label>
-                <select class="form-select" formControlName="kitchen">
-                  <option value="seperate">
-                    {{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN_TYPE.SEPERATE'|translate}}</option>
-                  <option value="open">{{'UPSERT_ANNOUNCE_SCREEN.CHARACTERISTICS_FORM.KITCHEN_TYPE.OPEN'|translate}}
-                  </option>
-                </select>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-
+  </form>
 </div>

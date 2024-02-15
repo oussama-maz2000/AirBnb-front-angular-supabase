@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { Router, RouterModule } from '@angular/router';
@@ -9,7 +9,11 @@ import { CommonModule } from '@angular/common';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { LottieModule } from 'ngx-lottie';
-import { AgenceService } from 'src/app/core/service/agence.service';
+import { TemplateAnnonce } from 'src/app/shared/components/annonce-template';
+import { Annonce } from 'src/app/core/model/annonce.type';
+import { AnnounceService } from 'src/app/core/service/announce.service';
+import { SharedService } from 'src/app/core/service/shared.service';
+import { getIpAddressDeco } from 'src/app/core/decorators/shared.decorator';
 
 @Component({
   selector: 'app-home',
@@ -22,39 +26,27 @@ import { AgenceService } from 'src/app/core/service/agence.service';
     NgxBootstrapIconsModule,
     LottieModule,
     RouterModule,
+    TemplateAnnonce,
   ],
-  providers: [],
+  
 })
+
+
 export class HomeComponent implements OnInit {
   supabaseUser: any | undefined;
-  selectedProjects = [];
-  projects = [
-    {
-      id: 'p1',
-      title: 'Project A',
-      subprojects: [
-        { title: 'Subproject 1 of A', id: 's1p1' },
-        { title: 'Subproject 2 of A', id: 's2p1' },
-      ],
-    },
-    {
-      id: 'p2',
-      title: 'Project B',
-      subprojects: [
-        { title: 'Subproject 1 of B', id: 's1p2' },
-        { title: 'Subproject 2 of B', id: 's2p2' },
-      ],
-    },
-  ];
-
+  data: readonly Annonce[];
   constructor(
     private store: Store<State>,
     private router: Router,
     translate: TranslateService,
-    private agenceService: AgenceService
+    private service: AnnounceService,
+    public sharedService:SharedService
   ) {
     translate.setDefaultLang('fr');
     translate.use('fr');
+    this.service.getAllAnnonces().subscribe((data) => {
+      this.data = data;
+    });
   }
 
   goToAuth() {
@@ -67,18 +59,20 @@ export class HomeComponent implements OnInit {
     //219541OVH!!Ld
   }
 
+  @getIpAddressDeco()
   ngOnInit(): void {
-    this.store.pipe(select(getSupabaseUser)).subscribe((user) => {
+    this.store.pipe(select(getSupabaseUser))/* .subscribe((user) => {
       console.log(user);
       this.supabaseUser = user;
-    });
+    }); */
   }
 
   logout() {
     this.store.dispatch(AuthActions.logOut());
   }
 
-  getAllAgence() {
-    this.agenceService.getAllAgence();
-  }
+ 
+
+  
+
 }

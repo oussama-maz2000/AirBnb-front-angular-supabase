@@ -7,6 +7,7 @@ import {DashboardRoutingModule} from './dashboard-routing.module';
 import {DashboardComponent} from './dashboard.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {RouterModule} from "@angular/router";
+import { SharedService } from 'src/app/core/service/shared.service';
 
 @NgModule({
   imports: [
@@ -22,7 +23,8 @@ import {RouterModule} from "@angular/router";
   declarations: [
     DashboardComponent,
   ],
-  exports: []
+  exports: [],
+ /*  providers:[SharedService] */
 })
 export class DashboardModule {
 

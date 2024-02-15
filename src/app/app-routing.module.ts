@@ -1,6 +1,7 @@
 import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {UpsertAnnounceComponent} from "./features/dashboard/announce/upsert-announce/upsert-announce.component";
+import { SharedService } from './core/service/shared.service';
 
 const routes: Routes = [
   {
@@ -48,5 +49,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers:[]
 })
 export class AppRoutingModule {}

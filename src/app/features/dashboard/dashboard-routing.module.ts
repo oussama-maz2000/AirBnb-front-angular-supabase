@@ -7,6 +7,7 @@ import {CalendarComponent} from "./calendar/calendar.component";
 import {AnnounceComponent} from "./announce/announce.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {UpsertAnnounceComponent} from "./announce/upsert-announce/upsert-announce.component";
+import { DatatableAnnonceComponent } from './announce/datatable-annonce/datatable-annonce.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
         path: 'calendar', component: CalendarComponent
       },
       {
-        path: 'announce', component: AnnounceComponent
+        path: 'announce', component: DatatableAnnonceComponent
       },
       {
         path: 'upsert-announce',
@@ -34,6 +35,7 @@ const routes: Routes = [
       {
         path: '', component: HomeComponent
       },
+      
     ]
   },
 

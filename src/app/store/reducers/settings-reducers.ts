@@ -6,12 +6,17 @@ export interface SettingsState {
   menuItems: Array<MenuItem>;
   lng: string;
   lang: string;
+  loading:boolean,
+  ipAddress:string|undefined,
 }
 
 const initialState: SettingsState = {
   menuItems: [],
-  lng: 'ar',
-  lang: 'ar',
+  lng: 'en',
+  lang: 'en',
+  loading:false,
+  ipAddress:undefined,
+
 };
 
 export const settingsReducer = createReducer(
@@ -20,8 +25,8 @@ export const settingsReducer = createReducer(
     return {
       ...state,
       menuItems: props.menuItems,
-    };
-    menuItems: props.menuItems;
+    };  
+/*     menuItems: props.menuItems; */
   }),
   on(SettingsActions.setLanguage, (state, props) => {
     return {
@@ -29,5 +34,19 @@ export const settingsReducer = createReducer(
       lng: props.lang,
       lang: props.lang,
     };
+  }),
+  on(SettingsActions.loading,(state,props)=>
+  {
+    return{
+      ...state,
+      loading:props.loading
+    }
+  }),
+  on(SettingsActions.getIpAddressSuccess,(state,props)=>
+  {
+    return{
+      ...state,
+      ipAddress:props.ip
+    }
   })
 );

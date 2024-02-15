@@ -141,7 +141,7 @@
       "HEATING": "Heating",
       "HEATING_TYPE": {
         "CENTRAL": "Central",
-        "CHIMNEY": "chimney"
+        "CHIMNEY": "Chimney"
       },
       "CITY": "Town",
       "CITY_TYPE": {
@@ -178,7 +178,7 @@
         "2": "Courthouse",
         "3": "Elementary school",
         "4": "Secondary School",
-        "5": "High school ",
+        "5": "High school",
         "6": "Bank",
         "7": "Mosque",
         "8": "University",

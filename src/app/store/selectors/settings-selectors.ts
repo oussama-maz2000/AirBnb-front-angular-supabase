@@ -18,3 +18,5 @@ export const getLang = createSelector(
   settingsSelector,
   (state: SettingsState) => state.lang
 );
+
+export const getLoad=createSelector(settingsSelector,(state:SettingsState)=>state.loading)

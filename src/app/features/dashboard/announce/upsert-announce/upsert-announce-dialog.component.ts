@@ -1,30 +1,22 @@
-import {Component, inject} from "@angular/core";
+import {Component, Inject, Input, OnInit, Optional, inject} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AnnounceImmo} from "../../../../core/model/announce-immo";
-import {UpsertDialogComponent} from "../../../../shared/directives/upsert-dialog.component";
+
+import { DialogRef } from "@ngneat/dialog";
+import { ImgesSlider } from "src/app/shared/components/imges-slider";
 
 @Component({
   standalone: true,
   templateUrl: './upsert-announce-dialog.component.html',
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+
+
+  imports: [CommonModule, FormsModule, ReactiveFormsModule,ImgesSlider]
 })
-export class UpsertAnnounceDialogComponent extends UpsertDialogComponent<AnnounceImmo> {
+export class UpsertAnnounceDialogComponent implements OnInit{
+ref: DialogRef = inject(DialogRef);
 
-  form = inject(FormBuilder).nonNullable.group({
-    prpType: ['', Validators.required],
-    annType: ['', Validators.required],
-    jrcType: ['', Validators.required],
-    etatType: ['', Validators.required],
-    address: ['', Validators.required],
-    willaya: ['', Validators.required],
-  });
-
-  getMessages() {
-    return {
-      add: `User was added successfully`,
-      edit: `User was updated successfully`,
-    };
-  }
+ngOnInit(): void {
+  console.log(this.ref.data);
+}
 
 }

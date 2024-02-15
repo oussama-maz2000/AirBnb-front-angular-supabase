@@ -40,8 +40,8 @@ export class DashboardComponent implements OnInit {
       select(getSupabaseUser),
       takeUntil(this.destroy$),
       tap((user) => {
-        console.log("TAP data")
-        console.log(user);
+        /* console.log("TAP data")
+        console.log(user); */
         this.supabaseUser = user;
       })).subscribe();
 
@@ -49,8 +49,8 @@ export class DashboardComponent implements OnInit {
       select(getMenuItems),
       takeUntil(this.destroy$),
       tap((data:Array<MenuItem>) => {
-        console.log("TAP data")
-        console.log(data);
+        /* console.log("TAP data")
+        console.log(data); */
         this.navLinks = data;
       })).subscribe();
   }

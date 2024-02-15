@@ -13,7 +13,7 @@ export class SettingsService {
   }
 
   loadMenuItems(): Observable<any> {
-    console.log('--------------------------- LOAD MENU CONF ---------------------------');
+    /* console.log('--------------------------- LOAD MENU CONF ---------------------------'); */
     return this.httpClient.get(environment.supabaseUrl + '/rest/v1/IMMO_MENU_ITEM'
       ,{
         headers: {

@@ -25,6 +25,11 @@ export abstract class UpsertDialogComponent<T extends Record<string, any>> imple
     }
   }
 
+  /* logData(){
+    console.log(this.ref.data);
+    
+  } */
+
   upsert() {
     console.log(this.form);
     console.log(this.ref)
