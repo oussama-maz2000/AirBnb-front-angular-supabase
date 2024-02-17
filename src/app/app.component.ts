@@ -13,6 +13,7 @@ import { AuthActions } from './store/actions/auth-actions';
 import { getSupabaseClient } from './store/selectors/supabase-selectors';
 import { SupabaseActions } from './store/actions/supabase-actions';
 import { getLoad } from './store/selectors/settings-selectors';
+import { AnnonceActions } from './store/actions/annonce-action';
 
 @Component({
   selector: 'app-root',
@@ -47,6 +48,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+// dispatch action to get all annonces
+    this.store.dispatch(AnnonceActions.getAnnonces());
+
+
+
+
     this.store.dispatch(SupabaseActions.initSupabaseClient());
 
     this.store.pipe(select(getSupabaseClient)).subscribe((supabase) => {

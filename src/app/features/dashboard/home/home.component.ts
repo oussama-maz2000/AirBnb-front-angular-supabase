@@ -39,14 +39,12 @@ export class HomeComponent implements OnInit {
     private store: Store<State>,
     private router: Router,
     translate: TranslateService,
-    private service: AnnounceService,
+    
     public sharedService:SharedService
   ) {
     translate.setDefaultLang('fr');
     translate.use('fr');
-    this.service.getAllAnnonces().subscribe((data) => {
-      this.data = data;
-    });
+  
   }
 
   goToAuth() {

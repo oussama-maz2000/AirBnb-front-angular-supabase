@@ -19,6 +19,14 @@ const routes: Routes = [
     data: {},
   },
   {
+    path: 'announce',
+    loadChildren: () =>
+      import('./features/announce/announce.module').then(
+        (m) => m.AnnounceModule
+      ),
+    data: {},
+  },
+  {
     path: 'dashboard',
     //canMatch: [() => inject(CanMatchGuard).canMatch()],
     children: [

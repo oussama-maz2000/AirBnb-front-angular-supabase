@@ -69,7 +69,7 @@ export class AnnounceService {
     return forkJoin(deleteFiles);
   }
 
-  public getAllAnnonces(): Observable<Annonce[]> {
+  public getAllAnnoncesByID(): Observable<Annonce[]> {
     return this.http.get<Annonce[]>(
       'https://yarlrybrsqapllwioing.supabase.co/rest/v1/annonce?agence_id=eq.1&select=*',
       { headers: this.headers }
@@ -101,12 +101,18 @@ export class AnnounceService {
 
 
 
+  public getAllAnnonces(): Observable<Annonce[]> {
+    return this.http.get<Annonce[]>(
+      'https://yarlrybrsqapllwioing.supabase.co/rest/v1/annonce?select=*',
+      { headers: this.headers }
+    );
+  }
+
+
 }
 type ResponseImg = {
   Id: string;
   Key: string;
 };
-function getIpAddress(target: typeof AnnounceService): void | typeof AnnounceService {
-  throw new Error('Function not implemented.');
-}
+
 

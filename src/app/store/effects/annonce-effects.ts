@@ -59,7 +59,7 @@ export class AnnonceEffects {
     this.actions$.pipe(
       ofType(AnnonceActions.getAnnonces),
       mergeMap(() =>
-        this.service.getAllAnnonces().pipe(
+        this.service.getAllAnnoncesByID().pipe(
           mergeMap((annonces) => {
             return [
               AnnonceActions.getAnnoncesSuc({ annonces: annonces }),
