@@ -1,0 +1,35 @@
+<div class="container-fluid mt-2">
+    <div class="row">
+      <!--  <ng-container *ngFor="let item of data |async" >
+        <app-annonce-template [annonce]="item" ></app-annonce-template>
+      </ng-container>  -->
+      <ng-container *ngFor="let item of data |async" >
+      <div class="col-sm-3">
+        <div class="col-sm-12">
+          <app-Imges-Slider [imageList]="item.images"></app-Imges-Slider>
+        </div>
+        <p style="margin-top: 3px; margin-bottom: 0px">
+          {{ item.estate }} <span> , </span>{{ item.type }}
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px">{{ item.willaya }}</p>
+        <p style="margin-top: 0px; margin-bottom: 0px">
+          {{ item.piece | uppercase }} <span> , </span>{{ item.surface }}
+          <span> m </span>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px">
+          {{ item.price }}<span> DZD </span>
+        </p>
+        <a
+        [routerLink]="['/client/announce', item.id]"
+        (click)="update_counter(item.id,item.agence_id)"
+          type="button"
+          class="btn btn-lg bg-water-violeta btn-sm w-100 mt-1 mb-2 text-white"
+          
+        >
+          View Details
+      </a>
+      </div>
+    </ng-container>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

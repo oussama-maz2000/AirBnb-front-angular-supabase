@@ -1,6 +1,6 @@
 import { inject, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {UpsertAnnounceComponent} from "./features/dashboard/announce/upsert-announce/upsert-announce.component";
+import {UpsertAnnounceComponent} from "./features/dashboard/announce-admin/upsert-announce/upsert-announce.component";
 import { SharedService } from './core/service/shared.service';
 
 const routes: Routes = [
@@ -19,12 +19,14 @@ const routes: Routes = [
     data: {},
   },
   {
-    path: 'announce',
-    loadChildren: () =>
-      import('./features/announce/announce.module').then(
+    path: 'client',
+    
+        loadChildren: () =>
+      import('./features/announce-client/announce.module').then(
         (m) => m.AnnounceModule
       ),
     data: {},
+      
   },
   {
     path: 'dashboard',

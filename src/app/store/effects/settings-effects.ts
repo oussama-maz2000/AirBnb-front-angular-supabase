@@ -43,8 +43,9 @@ export class SettingsEffects {
    return this.actions$.pipe(
       ofType(SettingsActions.getIpAddress),
       switchMap(() =>
-        this.sharedService.getIpAddress().pipe(
+        SharedService.getIpAddress().pipe(
           map((ip: any) => {
+            console.log(ip)
             return SettingsActions.getIpAddressSuccess({ ip: ip.ip });
           })
         )

@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { State } from '../../../store';
 import { Router, RouterModule } from '@angular/router';
@@ -11,9 +11,11 @@ import { NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 import { LottieModule } from 'ngx-lottie';
 import { TemplateAnnonce } from 'src/app/shared/components/annonce-template';
 import { Annonce } from 'src/app/core/model/annonce.type';
-import { AnnounceService } from 'src/app/core/service/announce.service';
 import { SharedService } from 'src/app/core/service/shared.service';
-import { getIpAddressDeco } from 'src/app/core/decorators/shared.decorator';
+import { getIpAddressDeco,trackAnnonceDeco } from 'src/app/core/decorators/shared.decorator';
+import { getAnnonces } from 'src/app/store/selectors/annonce-selectors';
+import { Observable } from 'rxjs';
+import { ImgesSlider } from 'src/app/shared/components/imges-slider';
 
 @Component({
   selector: 'app-home',
@@ -27,25 +29,41 @@ import { getIpAddressDeco } from 'src/app/core/decorators/shared.decorator';
     LottieModule,
     RouterModule,
     TemplateAnnonce,
+    ImgesSlider
   ],
   
 })
 
 
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit{
   supabaseUser: any | undefined;
-  data: readonly Annonce[];
+  data:  Observable<Annonce[]>;
+  images:readonly string[]=[
+    "https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/8a51575d-ec72-4069-abaa-4b296013485d",
+    "https://yarlrybrsqapllwioing.supabase.co/storage/v1/object/public/ANNOUNCE_IMAGES/1b681259-9c56-48ca-a369-bae9d582825c"
+  ]
+  annonce:Annonce={
+    
+    estate:"Home",
+    type:"rent",
+    price:20000,
+    piece:"f1",
+    surface:190,
+    willaya:"Batna",
+    codePostal:"05000",
+    images:[],
+    }
   constructor(
     private store: Store<State>,
     private router: Router,
     translate: TranslateService,
     
-    public sharedService:SharedService
   ) {
     translate.setDefaultLang('fr');
     translate.use('fr');
   
   }
+  
 
   goToAuth() {
     this.router.navigate(['/login']);
@@ -63,14 +81,30 @@ export class HomeComponent implements OnInit {
       console.log(user);
       this.supabaseUser = user;
     }); */
+
+    this.data=this.store.pipe(select(getAnnonces))
+
   }
 
+ 
   logout() {
     this.store.dispatch(AuthActions.logOut());
   }
 
- 
+
+  id_annonce:number;
+  id_agence :number;
+@trackAnnonceDeco()
+ trackAnnonce(ids:Track){
+this.id_annonce=<number>ids.id_annonce
+this.id_agence=<number>ids.id_agence
+ }
 
   
 
+}
+
+type Track={
+  id_annonce:number|undefined,
+  id_agence:number|undefined
 }

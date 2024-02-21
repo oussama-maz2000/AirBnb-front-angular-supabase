@@ -14,5 +14,6 @@ export const AnnonceActions = createActionGroup({
     deleteAnnonceSuc: props<{ id: number }>(),
     deleteAnnonceErr: props<{ err: any }>(),
     getAllAnnonces: emptyProps(),
+    updateCountAnnonce:props<{id_annonce:number,id_agence:number}>()
   },
 });

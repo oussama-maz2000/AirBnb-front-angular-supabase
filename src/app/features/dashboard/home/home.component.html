@@ -3,11 +3,11 @@
 <!-- <div class="container-fluid">
   <div class="row">
     </div> -->
-     <!--  <ng-container *ngFor="let item of data" >
+<!--  <ng-container *ngFor="let item of data" >
         <app-annonce-template [annonce]="item" [ngClass]="'col-sm-4 col-md-3 mt-4 '"></app-annonce-template>
       </ng-container> -->
-    
-   <!--  <div class="row">
+
+<!--  <div class="row">
       <div class="col-6">
         <img src="" alt="">
       </div>
@@ -25,3 +25,35 @@
     </div>
   </div>  -->
 
+<div class="container-fluid">
+  <div class="row">
+    <!--  <ng-container *ngFor="let item of data |async" >
+      <app-annonce-template [annonce]="item" ></app-annonce-template>
+    </ng-container>  -->
+    <ng-container *ngFor="let item of data |async" >
+    <div class="col-sm-3">
+      <div class="col-sm-12">
+        <app-Imges-Slider [imageList]="item.images"></app-Imges-Slider>
+      </div>
+      <p style="margin-top: 3px; margin-bottom: 0px">
+        {{ item.estate }} <span> , </span>{{ item.type }}
+      </p>
+      <p style="margin-top: 0px; margin-bottom: 0px">{{ item.willaya }}</p>
+      <p style="margin-top: 0px; margin-bottom: 0px">
+        {{ item.piece | uppercase }} <span> , </span>{{ item.surface }}
+        <span> m </span>
+      </p>
+      <p style="margin-top: 0px; margin-bottom: 0px">
+        {{ item.price }}<span> DZD </span>
+      </p>
+      <button
+      (click)="trackAnnonce({id_annonce:item.id,id_agence:item.agence_id})"
+        type="button"
+        class="btn btn-lg bg-water-violeta btn-sm w-100 mt-1 mb-0 text-white"
+      >
+        View Details
+      </button>
+    </div>
+  </ng-container>
+  </div>
+</div>

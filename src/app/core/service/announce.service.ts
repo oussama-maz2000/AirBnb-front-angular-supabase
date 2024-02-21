@@ -4,7 +4,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Annonce } from '../model/annonce.type';
 import { v4 as uuidv4 } from 'uuid';
 import { Observable, forkJoin, map } from 'rxjs';
-import { logResponse } from '../decorators/log-response.decorator';
 @Injectable({ providedIn: CoreModule })
 export class AnnounceService {
   private supabaseURLStorage: string =
@@ -22,7 +21,6 @@ export class AnnounceService {
 
   constructor(private http: HttpClient) {}
 
-  
   public insertAnnonce(annonce: Annonce, imagesUrl: string[]): Observable<any> {
     this.headers.append('Content-type', 'application/json');
     this.headers.append('Prefer', 'return=representation');
@@ -76,7 +74,7 @@ export class AnnounceService {
     );
   }
 
-  public deleteAnnonce(id:number): Observable<any> {
+  public deleteAnnonce(id: number): Observable<any> {
     return this.http.delete(
       `https://yarlrybrsqapllwioing.supabase.co/rest/v1/annonce?id=eq.${id}`,
       { headers: this.headers, observe: 'response' }
@@ -92,14 +90,10 @@ export class AnnounceService {
     });
   }
 
-
-
-// to get the ip address of client who visit the web site
+  // to get the ip address of client who visit the web site
   getIpAddress(): Observable<any> {
     return this.http.get('https://api.ipify.org?format=json');
   }
-
-
 
   public getAllAnnonces(): Observable<Annonce[]> {
     return this.http.get<Annonce[]>(
@@ -108,11 +102,30 @@ export class AnnounceService {
     );
   }
 
-
+  public updateAnnonceCountViews(id_annonce: number, id_agence: number) {
+    this.headers.append('Content-type', 'application/json');
+    let body = {
+      annonce_id: id_annonce,
+      agence_id: id_agence,
+    };
+    return this.http.post(
+      'https://yarlrybrsqapllwioing.supabase.co/rest/v1/rpc/increment_view_counter',
+      body,
+      { headers: this.headers, observe: 'response' }
+    );
+  }
 }
 type ResponseImg = {
   Id: string;
   Key: string;
 };
 
-
+/* 
+curl -X PATCH 'https://yarlrybrsqapllwioing.supabase.co/rest/v1/annonce_stat?some_column=eq.someValue' \
+-H "apikey: SUPABASE_CLIENT_ANON_KEY" \
+-H "Authorization: Bearer SUPABASE_CLIENT_ANON_KEY" \
+-H "Content-Type: application/json" \
+-H "Prefer: return=minimal" \
+-d '{ "other_column": "otherValue" }'
+           */
+/* rest/v1/rpc/increment_view_count */

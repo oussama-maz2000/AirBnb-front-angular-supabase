@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit,
+} from '@angular/core';
 import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
 
 @Component({
@@ -8,14 +13,21 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
   imports: [CommonModule, NgxBootstrapIconsModule],
   template: `
     <style>
+     
       .container-img {
         position: relative;
         overflow: hidden;
         height: 170px;
+        width: 100%;
         border-radius: 10px;
-        background-size: cover;
-        background: no-repeat center center;
         box-shadow: 0 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.12) !important;
+      }
+
+      .slider-image {
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover; 
+        border-radius: 10px; 
       }
 
       .container-img:hover .right-icon {
@@ -45,41 +57,39 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
         transition: 0.3s;
       }
     </style>
-    <div
-      class="container-img"
-      [style.background-image]="'url(' + imageList[currentIndex] + ')'"
-      [style.box-shadow]="'0 .3125rem .625rem 0 rgba(0,0,0,.16)!important'"
-      [ngStyle]="{
-      'background-size': 'cover',
-      'background-repeat': 'no-repeat',
-      
-    }"
-    >
-      <span class="left-icon" (click)="previousImg()"
-        ><i-bs [name]="leftIcon"></i-bs
-      ></span>
-      <span class="right-icon" (click)="nextImg()"
-        ><i-bs [name]="righIcon"></i-bs
-      ></span>
+    
+    <div class="container-img">
+      <img
+        [src]="imageList[currentIndex]"
+        alt="Image slider"
+        [style.objectFit]="'cover'"
+        class="slider-image"
+      />
+      <span class="left-icon" (click)="previousImg()">
+        <i-bs [name]="leftIcon"></i-bs>
+      </span>
+      <span class="right-icon" (click)="nextImg()">
+        <i-bs [name]="righIcon"></i-bs>
+      </span>
     </div>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ImgesSlider implements OnInit {
   public iconNames = IconNamesEnum;
 
-  @Input({ required: true }) imageList:readonly string[];
+  @Input({ required: true }) imageList: readonly string[] | File[];
   currentIndex = 0;
   leftIcon: IconNamesEnum = this.iconNames.ArrowLeftCircleFill;
   righIcon: IconNamesEnum = this.iconNames.ArrowRightCircleFill;
   constructor() {}
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   previousImg() {
     if (this.currentIndex > 0) {
       this.currentIndex--;
     } else {
-      this.currentIndex = this.imageList.length - 1; // Loop back to the last image
+      this.currentIndex = this.imageList.length - 1; 
     }
   }
 
@@ -87,7 +97,7 @@ export class ImgesSlider implements OnInit {
     if (this.currentIndex < this.imageList.length - 1) {
       this.currentIndex++;
     } else {
-      this.currentIndex = 0; // Loop back to the first image
+      this.currentIndex = 0; 
     }
   }
 }

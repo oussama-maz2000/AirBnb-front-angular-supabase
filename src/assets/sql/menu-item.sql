@@ -48,9 +48,21 @@ VALUES
   ('LOGOUT', 'logout', 'person', '#0C1425', 2);
 
 
+/* creating function  */
+CREATE OR REPLACE FUNCTION public.annonce_stat_calc()
+RETURNS TRIGGER AS $$
+BEGIN
+  INSERT INTO annonce_stat(id_annonce,id_agence) VALUES (NEW.id,NEW.agence_id);
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
 
 
-
+/* trigger  */
+CREATE TRIGGER insert_new_ann_stat
+AFTER INSERT ON annonce
+FOR EACH ROW
+EXECUTE FUNCTION annonce_stat_calc();
 
 
 

@@ -4,10 +4,10 @@ import {DashboardComponent} from './dashboard.component';
 import {AccountComponent} from "./account/account.component";
 import {HomeComponent} from "./home/home.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-import {AnnounceComponent} from "./announce/announce.component";
+import {AnnounceComponent} from "./announce-admin/announce.component";
 import {SettingsComponent} from "./settings/settings.component";
-import {UpsertAnnounceComponent} from "./announce/upsert-announce/upsert-announce.component";
-import { DatatableAnnonceComponent } from './announce/datatable-annonce/datatable-annonce.component';
+import {UpsertAnnounceComponent} from "./announce-admin/upsert-announce/upsert-announce.component";
+import { DatatableAnnonceComponent } from './announce-admin/datatable-annonce/datatable-annonce.component';
 
 const routes: Routes = [
   {

@@ -49,6 +49,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
 
+
+console.log("APP COMPONENT CALLED")
+
 // dispatch action to get all annonces
     this.store.dispatch(AnnonceActions.getAnnonces());
 

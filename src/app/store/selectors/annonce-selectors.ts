@@ -15,7 +15,7 @@ export const getSucAnnonce=createSelector(annonceSelector,(annState:AnnonceState
 )
 
 
-export const getAnnonceById=(id:number)=>createSelector(annonceSelector,(annState:AnnonceState)=>annState.annonces.find((annonce)=>annonce.id===id))
+export const getAnnonceById=(id:number|null)=>createSelector(annonceSelector,(annState:AnnonceState)=>annState.annonces.find((annonce)=>annonce.id===id))
 /* export const getAnnonceById = () => createSelector(
     annonceSelector,
     (annState: AnnonceState, props: { id: number }) => annState.annonces.find(annonce => annonce.id === props.id)

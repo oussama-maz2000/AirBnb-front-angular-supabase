@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
-import { AnnounceComponent } from './features/dashboard/announce/announce.component';
+import { AnnounceComponent } from './features/dashboard/announce-admin/announce.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './store';
 import { EffectsModule } from '@ngrx/effects';
@@ -25,7 +25,17 @@ import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+export class AppInjector {
+  private static injector: Injector;
 
+  static setInjector(injector: Injector) {
+    AppInjector.injector = injector;
+  }
+
+  static getInjector(): Injector {
+    return AppInjector.injector;
+  }
+}
 @NgModule({
   declarations: [AppComponent],
   providers: [],
@@ -61,4 +71,8 @@ export function createTranslateLoader(http: HttpClient) {
     NgxBootstrapIconsModule.pick(allIcons)
   ],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private injector: Injector) {
+    AppInjector.setInjector(injector);
+  }
+}

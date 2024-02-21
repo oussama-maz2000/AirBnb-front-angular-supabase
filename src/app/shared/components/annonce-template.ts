@@ -95,9 +95,9 @@ import { ImgesSlider } from './imges-slider';
         padding-left: 5px;
       }
 
-      .col-sm-4.col-md-3 {
+     /*  .col-sm-4.col-md-3 {
         cursor: pointer;
-      }
+      } */
 
       .text-center {
         font-family: var(--bs-font-monospace);
