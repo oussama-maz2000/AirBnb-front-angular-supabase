@@ -1,7 +1,8 @@
 import { inject, NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { mapToCanActivate, RouterModule, Routes } from '@angular/router';
 import {UpsertAnnounceComponent} from "./features/dashboard/announce-admin/upsert-announce/upsert-announce.component";
 import { SharedService } from './core/service/shared.service';
+import { authGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -30,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    //canMatch: [() => inject(CanMatchGuard).canMatch()],
+    canActivate:[authGuard],
+    /* canMatch: [() => inject(CanMatchGuard).canMatch()], */
     children: [
       {
         path: '',
@@ -61,4 +63,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers:[]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+  canActivate() {
+    return true;
+  }
+}

@@ -18,7 +18,7 @@ export interface AuthState {
 const initialState: AuthState = {
   loaded: false,
   loading: false,
-  authenticated: false,
+  authenticated: true,
   supabaseUser: undefined,
   registerResponse: undefined,
   resetPasswordResponse: undefined,
@@ -32,7 +32,8 @@ export const authReducer = createReducer(initialState,
     return {
       ...state,
       loaded: true,
-      authenticated: isAuthenticated(props.user),
+      /* authenticated: isAuthenticated(props.user), */
+      
       supabaseUser: props.user
     }
   }),

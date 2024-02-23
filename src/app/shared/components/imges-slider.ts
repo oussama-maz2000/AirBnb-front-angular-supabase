@@ -18,7 +18,7 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
         position: relative;
         overflow: hidden;
         height: 170px;
-        width: 100%;
+        width: 60%;
         border-radius: 10px;
         box-shadow: 0 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.12) !important;
       }
