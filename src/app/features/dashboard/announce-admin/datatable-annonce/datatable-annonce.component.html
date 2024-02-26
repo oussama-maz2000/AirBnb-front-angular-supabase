@@ -1,14 +1,13 @@
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 <div class="d-flex justify-content-end align-items-center mt-2">
-  <button class="btn btn-md bg-water-violeta-state btn-md  mt-4 mb-2 text-white" type="submit" (click)="newAnnonce()">
+  <button class="btn btn-md btn-danger btn-sm  mt-4 mb-2 text-white" type="submit" (click)="newAnnonce()">
     Nouvelle Annonce
   </button>
 </div>
-<div class="card">
-    <div class="card-body">
+
 <ag-grid-angular
 class="ag-theme-quartz"
-  style="height: 600px;
+  style="height: 680px;
   width: 100%;"
     [gridOptions]="gridOptions"
     [columnDefs]="colDefs"
@@ -16,6 +15,5 @@ class="ag-theme-quartz"
     [pagination]="true">
   </ag-grid-angular>
 </div>
-</div>
-</div>
+
 

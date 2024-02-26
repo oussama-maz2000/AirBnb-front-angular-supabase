@@ -21,6 +21,7 @@ import { CommonModule } from '@angular/common';
 import { Spinner } from './shared/components/spinner';
 import { AnnonceEffects } from './store/effects/annonce-effects';
 import { NgxBootstrapIconsModule, allIcons } from 'ngx-bootstrap-icons';
+import { NavbarComponent } from './features/navbar/navbar.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -68,7 +69,8 @@ export class AppInjector {
     }),
     AnnounceComponent,
     Spinner,
-    NgxBootstrapIconsModule.pick(allIcons)
+    NgxBootstrapIconsModule.pick(allIcons),
+  NavbarComponent
   ],
 })
 export class AppModule {

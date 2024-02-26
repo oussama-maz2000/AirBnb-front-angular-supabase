@@ -1,4 +1,3 @@
-<h5 class="h5">home works</h5>
 
 <!-- <div class="container-fluid">
   <div class="row">
@@ -24,35 +23,37 @@
       </div>
     </div>
   </div>  -->
+  <br><br>
+  
+<div class="container-fluid mt-5 ">
 
-<div class="container-fluid">
-  <div class="row">
-    <!--  <ng-container *ngFor="let item of data |async" >
-      <app-annonce-template [annonce]="item" ></app-annonce-template>
-    </ng-container>  -->
+  <div class="row mt-5">
+    
     <ng-container *ngFor="let item of data |async" >
     <div class="col-sm-3">
       <div class="col-sm-12">
         <app-Imges-Slider [imageList]="item.images"></app-Imges-Slider>
       </div>
-      <p style="margin-top: 3px; margin-bottom: 0px">
+      <p style="margin-top: 3px; margin-bottom: 0px;font-size: 18px;color: black;" >
         {{ item.estate }} <span> , </span>{{ item.type }}
       </p>
       <p style="margin-top: 0px; margin-bottom: 0px">{{ item.willaya }}</p>
-      <p style="margin-top: 0px; margin-bottom: 0px">
+    <!--   <p style="margin-top: 0px; margin-bottom: 0px">
         {{ item.piece | uppercase }} <span> , </span>{{ item.surface }}
         <span> m </span>
-      </p>
+      </p> -->
       <p style="margin-top: 0px; margin-bottom: 0px">
+        <strong>
         {{ item.price }}<span> DZD </span>
+      </strong>
       </p>
-      <button
+      <a
       (click)="trackAnnonce({id_annonce:item.id,id_agence:item.agence_id})"
         type="button"
-        class="btn btn-lg bg-water-violeta btn-sm w-100 mt-1 mb-2 text-white"
+        class="btn btn-outline-danger btn-sm w-40 text-center mt-1 mb-4"
       >
-        View Details
-      </button>
+        Details
+    </a>
     </div>
   </ng-container>
   </div>

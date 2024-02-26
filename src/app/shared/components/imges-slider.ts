@@ -18,7 +18,7 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
         position: relative;
         overflow: hidden;
         height: 170px;
-        width: 60%;
+        width: 72%;
         border-radius: 10px;
         box-shadow: 0 0.3125rem 0.625rem 0 rgba(0, 0, 0, 0.12) !important;
       }
@@ -58,7 +58,7 @@ import { IconNamesEnum, NgxBootstrapIconsModule } from 'ngx-bootstrap-icons';
       }
     </style>
     
-    <div class="container-img">
+    <div class="container-img" >
       <img
         [src]="imageList[currentIndex]"
         alt="Image slider"
@@ -83,7 +83,9 @@ export class ImgesSlider implements OnInit {
   leftIcon: IconNamesEnum = this.iconNames.ArrowLeftCircleFill;
   righIcon: IconNamesEnum = this.iconNames.ArrowRightCircleFill;
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.changePic()
+  }
 
   previousImg() {
     if (this.currentIndex > 0) {
@@ -98,6 +100,12 @@ export class ImgesSlider implements OnInit {
       this.currentIndex++;
     } else {
       this.currentIndex = 0; 
+    }
+  }
+
+  changePic(){
+    if(this.imageList.length>1){
+setInterval(()=>{this.currentIndex++;},1000)
     }
   }
 }

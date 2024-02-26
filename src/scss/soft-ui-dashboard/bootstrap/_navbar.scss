@@ -260,7 +260,10 @@
 
     .show > .nav-link,
     .nav-link.active {
-      color: $navbar-light-active-color;
+      background-color: #ff385c;
+      color: white;
+      border: 1px solid transparent;
+      border-radius: 8px;
     }
   }
 
@@ -311,7 +314,7 @@
 
     .show > .nav-link,
     .nav-link.active {
-      color: $navbar-dark-active-color;
+      color: #ff385c;
     }
   }
 

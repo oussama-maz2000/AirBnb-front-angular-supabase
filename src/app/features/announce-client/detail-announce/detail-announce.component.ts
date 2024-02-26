@@ -6,7 +6,10 @@ import { Store, select } from '@ngrx/store';
 import { State } from 'src/app/store';
 import { getAnnonceById } from 'src/app/store/selectors/annonce-selectors';
 import { SettingsActions } from 'src/app/store/actions/settings-actions';
-import { traceDeco, trackAnnonceDeco } from 'src/app/core/decorators/shared.decorator';
+import {
+  traceDeco,
+  trackAnnonceDeco,
+} from 'src/app/core/decorators/shared.decorator';
 import { Annonce } from 'src/app/core/model/annonce.type';
 import { AnnounceService } from 'src/app/core/service/announce.service';
 
@@ -17,15 +20,10 @@ import { AnnounceService } from 'src/app/core/service/announce.service';
   templateUrl: './detail-announce.component.html',
   styleUrl: './detail-announce.component.scss',
 })
-export class DetailAnnounceComponent implements OnInit ,OnDestroy{
+export class DetailAnnounceComponent implements OnInit, OnDestroy {
+  /* PROPERTIES */
+  public data: Annonce | undefined;
 
-
-/* PROPERTIES */
-public data:Annonce|undefined;
-
-
-
- 
   ngOnInit(): void {
     this.route.paramMap
       .pipe(
@@ -39,7 +37,7 @@ public data:Annonce|undefined;
                 if (value == undefined) {
                   this.router.navigate(['/client/announces']);
                 }
-                this.data=value
+                this.data = value;
               })
             );
           } else {
@@ -49,27 +47,25 @@ public data:Annonce|undefined;
         })
       )
       .subscribe();
+    
 
-      
-  }
-
-
-@traceDeco()
-  ngOnDestroy(): void {
-    const ids={
-      id_annonce:this.data?.id,
-      id_agence:this.data?.agence_id
-    }
-    console.log('DETAILS COMPONENT DESTROYED');
     
   }
 
+  @traceDeco()
+  ngOnDestroy(): void {
+    const ids = {
+      id_annonce: this.data?.id,
+      id_agence: this.data?.agence_id,
+    };
+    console.log('DETAILS COMPONENT DESTROYED');
+  }
 
   constructor(
     private route: ActivatedRoute,
     private store: Store<State>,
     private router: Router,
-    private service:AnnounceService
+    private service: AnnounceService
   ) {
     console.log('DETAILS COMPONENT CALLED');
   }

@@ -8,7 +8,7 @@
     //background: #2F3B52;
     //background: transparent;
     //background: linear-gradient(#242E42, #20293C);
-    background: linear-gradient(#533D7D, #533D7D);
+    background: linear-gradient(#ff385c, #533D7D);
     //background: linear-gradient(#0193A5, #027184);
     //box-shadow: 4px 10px 0 #242E42;
     //border-left: 10px solid #2F3B52;
@@ -84,7 +84,7 @@
   }
 
   .navigation ul li.active a {
-    //color: var(--clr);
+    color: var(--clr);
     color: $soft;
   }
 

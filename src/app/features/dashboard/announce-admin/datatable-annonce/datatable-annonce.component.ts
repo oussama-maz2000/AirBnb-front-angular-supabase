@@ -37,16 +37,17 @@ export class DatatableAnnonceComponent implements OnInit {
     {
       field: 'id',
       cellStyle: { color: 'white', 'background-color': '#ff385c' },
-      width: 60,
+      width: 70,
       pinned: 'left',
+      headerName:"ID"
     },
     {
       field: 'estate',
-      cellStyle: (params) => {
+      /* cellStyle: (params) => {
         if (params.value === 'House') {
           return { white: 'red', backgroundColor: '#5cb25d' };
         } else return { white: 'red', backgroundColor: '#027788' };
-      },
+      }, */
       width: 130,
     },
     { field: 'type', width: 100 },

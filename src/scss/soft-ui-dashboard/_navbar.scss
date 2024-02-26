@@ -91,7 +91,7 @@
 .navbar-toggler {
   .navbar-toggler-icon {
     background-image: none;
-
+color: #ff385c;
     .navbar-toggler-bar {
       display: $navbar-toggler-bar-display;
       position: $navbar-toggler-bar-position;
@@ -147,6 +147,7 @@
         .nav-link,
         i {
           color: $dark;
+          
         }
       }
     }
@@ -160,6 +161,7 @@
 
         .navbar-nav {
           flex-direction: row;
+          
         }
       }
 

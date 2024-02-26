@@ -1133,8 +1133,8 @@ $navbar-padding-y: $spacer / 2 !default;
 $navbar-padding-x: null !default;
 $navbar-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .16) !default;
 
-$navbar-nav-link-padding-x: .5rem !default;
-$navbar-nav-link-padding: $navbar-nav-link-padding-x 1rem !default;
+$navbar-nav-link-padding-x: 1rem ;
+$navbar-nav-link-padding: $navbar-nav-link-padding-x 1rem ;
 
 $navbar-brand-font-size: $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
